@@ -24,3 +24,66 @@
     --glow-sm: 0 0 18px rgba(124, 58, 237, 0.30);
     --glow-md: 0 0 42px rgba(124, 58, 237, 0.28);
 }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'cv11' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--violet-electric);
+    text-decoration: none;
+    transition: color 0.25s var(--ease-soft);
+}
+
+a:hover {
+    color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.6em;
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 1.08;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+::selection {
+    background: rgba(124, 58, 237, 0.42);
+    color: #fff;
+}
