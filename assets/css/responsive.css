@@ -140,3 +140,7 @@
   .contact-link { padding: 0.9rem 1rem; }
   .award-card { flex-direction: column; gap: 0.7rem; }
 }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
