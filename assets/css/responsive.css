@@ -144,3 +144,12 @@
 @media (hover: none), (pointer: coarse) {
   .cursor-dot, .cursor-ring { display: none !important; }
 }
+
+@media print {
+  #neural-canvas, .boot, .cursor-dot, .cursor-ring,
+  .nav-x, .scroll-cue, .hud, .fusion, .constellation { display: none !important; }
+  body { background: #fff; color: #111; }
+  .page-shell::before { display: none; }
+  a { color: #4C1D95; }
+  .section { padding-block: 1.2rem; page-break-inside: avoid; }
+}
