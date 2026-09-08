@@ -134,3 +134,15 @@ ul {
   position: relative;
   z-index: 1;
 }
+
+.page-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 15% 0%, rgba(76, 29, 149, 0.38) 0%, transparent 55%),
+    radial-gradient(90% 60% at 100% 40%, rgba(124, 58, 237, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(5, 3, 13, 0.02) 0%, rgba(5, 3, 13, 0.48) 100%);
+}
