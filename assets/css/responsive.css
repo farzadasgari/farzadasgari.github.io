@@ -126,3 +126,17 @@
 
   .hud { display: none !important; }
 }
+
+@media (max-width: 400px) {
+  :root { --gutter: 1.1rem; }
+
+  .hero-name { font-size: 2.5rem; }
+  .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.16em; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn-x { width: 100%; }
+
+  .metric-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .contact-link { padding: 0.9rem 1rem; }
+  .award-card { flex-direction: column; gap: 0.7rem; }
+}
