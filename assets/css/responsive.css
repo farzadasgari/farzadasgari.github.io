@@ -81,3 +81,48 @@
   .constellation { height: 460px; }
 }
 
+@media (max-width: 767.98px) {
+  :root { --section-y: clamp(3.5rem, 9vw, 5rem); }
+
+  .hero { padding-top: 116px; padding-bottom: 5rem; }
+  .hero-cta { gap: 0.6rem; }
+  .hero-cta .btn-x { flex: 1 1 auto; justify-content: center; }
+  .hero-instrument { max-width: 260px; }
+  .instrument-readout { font-size: 0.55rem; gap: 0.7rem; }
+
+  .scroll-cue { display: none; }
+
+  .sec-title { font-size: clamp(1.65rem, 7vw, 2.1rem); }
+
+  .timeline { padding-left: 2.1rem; }
+  .tl-node { left: -2.1rem; width: 20px; height: 20px; }
+  .timeline-spine { left: 9px; }
+
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric { padding: 1.4rem 0.8rem; }
+
+  .constellation { display: none; }
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .skill-chips li {
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.6);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .fusion-legend {
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: left;
+  }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+
+  .hud { display: none !important; }
+}
