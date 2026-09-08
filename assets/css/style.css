@@ -270,3 +270,24 @@ ul {
   font-size: 0.82rem;
   border-radius: 8px;
 }
+
+.icon-link {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(18, 12, 36, 0.5);
+  color: var(--muted);
+  font-size: 1.12rem;
+  transition: all 0.28s var(--ease);
+    padding-bottom: 10px;
+}
+.icon-link:hover {
+  color: var(--text);
+  border-color: var(--violet-electric);
+  background: rgba(124, 58, 237, 0.16);
+  transform: translateY(-3px);
+  box-shadow: var(--glow-sm);
+}
