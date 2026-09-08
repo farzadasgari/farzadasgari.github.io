@@ -87,3 +87,10 @@ ul {
     background: rgba(124, 58, 237, 0.42);
     color: #fff;
 }
+
+:focus-visible {
+  outline: 2px solid var(--violet-electric);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
