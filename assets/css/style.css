@@ -94,3 +94,18 @@ ul {
   border-radius: 4px;
 }
 :focus:not(:focus-visible) { outline: none; }
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.7rem 1.1rem;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 1rem; color: #fff; }
