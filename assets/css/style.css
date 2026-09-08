@@ -222,3 +222,51 @@ ul {
     margin: 0.35rem 0 0;
     max-width: 60ch;
 }
+
+.btn-x {
+  --btn-bg: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.78rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--btn-bg);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.3s var(--ease),
+              border-color 0.3s var(--ease-soft), background 0.3s var(--ease-soft);
+}
+.btn-x:hover {
+  color: var(--text);
+  border-color: var(--violet-electric);
+  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+}
+.btn-x i { font-size: 1.05em; }
+
+.btn-primary-x {
+  --btn-bg: linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 26px rgba(124, 58, 237, 0.34);
+}
+.btn-primary-x:hover {
+  color: #fff;
+  box-shadow: 0 10px 38px rgba(124, 58, 237, 0.52);
+  border-color: transparent;
+}
+
+.btn-ghost-x {
+  --btn-bg: rgba(18, 12, 36, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.btn-sm-x {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.82rem;
+  border-radius: 8px;
+}
