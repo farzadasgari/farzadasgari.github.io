@@ -1,0 +1,10 @@
+@media (min-width: 1600px) {
+  :root { --maxw: 1360px; }
+  .hero-name { font-size: clamp(4.4rem, 6vw, 6.2rem); }
+}
+
+@media (max-width: 1199.98px) {
+  .pipe-stage p { font-size: 0.58rem; }
+  .pipe-node { width: 42px; height: 42px; font-size: 1.05rem; }
+  .pipe-rail { top: calc(1.1rem + 21px); }
+}
