@@ -182,3 +182,43 @@ ul {
     background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.30), transparent);
     opacity: 0.7;
 }
+
+.sec-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    max-width: 62ch;
+}
+
+.sec-index {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.sec-index::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(167, 139, 250, 0.45), transparent);
+}
+
+.sec-title {
+    font-size: clamp(1.9rem, 4.4vw, 3.1rem);
+    font-weight: 800;
+    margin: 0;
+}
+
+.sec-sub {
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin: 0.35rem 0 0;
+    max-width: 60ch;
+}
