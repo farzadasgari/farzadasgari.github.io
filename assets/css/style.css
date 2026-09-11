@@ -1633,3 +1633,8 @@ ul {
     height: 100%;
     transition: border-color 0.3s var(--ease-soft), transform 0.3s var(--ease);
 }
+
+.award-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+}
