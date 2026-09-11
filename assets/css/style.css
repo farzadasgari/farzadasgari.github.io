@@ -1781,3 +1781,8 @@ ul {
     linear-gradient(180deg, rgba(22, 16, 44, 0.85), rgba(11, 7, 24, 0.7));
     overflow: hidden;
 }
+
+.cta-panel h2 {
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    margin-bottom: 0.9rem;
+}
