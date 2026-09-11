@@ -553,3 +553,11 @@ ul {
     color: var(--violet-electric);
     margin-bottom: 1.4rem;
 }
+
+.hero-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+}
