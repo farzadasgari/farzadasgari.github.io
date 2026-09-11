@@ -1227,3 +1227,17 @@ ul {
 .tl-item:last-child {
     padding-bottom: 0;
 }
+
+.tl-node {
+    position: absolute;
+    left: -2.6rem;
+    top: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    transition: box-shadow 0.45s var(--ease), border-color 0.45s var(--ease-soft);
+}
