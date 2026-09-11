@@ -1607,3 +1607,12 @@ ul {
     font-size: 0.92rem;
     margin: 0 0 0.15rem;
 }
+
+.edu-year {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+    font-weight: 700;
+}
