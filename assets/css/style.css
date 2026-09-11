@@ -1786,3 +1786,9 @@ ul {
     font-size: clamp(1.7rem, 4vw, 2.7rem);
     margin-bottom: 0.9rem;
 }
+
+.cta-panel p {
+    color: var(--muted);
+    max-width: 54ch;
+    margin: 0 auto 2rem;
+}
