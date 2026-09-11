@@ -1005,3 +1005,7 @@ ul {
     text-transform: uppercase;
     color: var(--dim);
 }
+
+.fusion-legend span.on {
+    color: var(--violet-electric);
+}
