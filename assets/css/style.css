@@ -838,3 +838,14 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
     gap: 1.1rem;
 }
+
+.interest-card {
+    position: relative;
+    padding: 1.5rem 1.35rem 1.35rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: linear-gradient(165deg, rgba(22, 16, 44, 0.72), rgba(11, 7, 24, 0.55));
+    overflow: hidden;
+    transition: transform 0.35s var(--ease), border-color 0.35s var(--ease-soft),
+    box-shadow 0.35s var(--ease);
+}
