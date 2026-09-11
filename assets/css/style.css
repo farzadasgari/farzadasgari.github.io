@@ -330,8 +330,14 @@ ul {
 }
 
 .mono-dim {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--dim);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+}
+
+.ph {
+    color: var(--muted);
+    border-bottom: 1px dashed rgba(167, 139, 250, 0.45);
+    font-style: normal;
 }
