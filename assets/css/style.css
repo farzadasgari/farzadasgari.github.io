@@ -1090,3 +1090,9 @@ ul {
     color: var(--muted);
     line-height: 1.6;
 }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+}
