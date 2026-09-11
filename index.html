@@ -444,6 +444,133 @@
             </div>
         </section>
 
+        <section class="section section--sunken" id="projects">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <p class="sec-index">Projects / 03</p>
+                    <h2 class="sec-title">Research and software</h2>
+                    <p class="sec-sub">
+                        Selected work across remote sensing, climate extremes, and scientific tooling.
+                    </p>
+                </div>
+
+                <article class="featured reveal">
+                    <div class="featured-visual">
+                        <span class="live-chip"><span class="pulse" aria-hidden="true"></span> Live model</span>
+                        <canvas id="featured-canvas" data-plot="heat" role="img"
+                                aria-label="Heat map visualisation of modelled water surface values"></canvas>
+                    </div>
+
+                    <div class="featured-body">
+                        <p class="mono-label mb-2">Featured · Remote sensing + deep learning</p>
+                        <h3>Water quality &amp; lake evaporation</h3>
+
+                        <dl class="m-0">
+                            <div class="field">
+                                <dt>Research question</dt>
+                                <dd>
+                                    Can satellite observation and deep learning estimate water quality indicators and
+                                    lake evaporation reliably enough to replace sparse in-situ measurement?
+                                </dd>
+                            </div>
+                            <div class="field">
+                                <dt>Method</dt>
+                                <dd>
+                                    Remote sensing retrieval combined with deep learning models for evaporation
+                                    estimation, validated against ground observations.
+                                </dd>
+                            </div>
+                            <div class="field">
+                                <dt>Technologies</dt>
+                                <dd class="badge-row mt-1">
+                                    <span class="badge-x">Python</span>
+                                    <span class="badge-x">TensorFlow</span>
+                                    <span class="badge-x">Google Earth Engine</span>
+                                    <span class="badge-x">Remote Sensing</span>
+                                    <span class="badge-x">Hybrid Modelling</span>
+                                </dd>
+                            </div>
+                        </dl>
+
+                        <div class="d-flex flex-wrap gap-2 mt-3">
+                            <a class="btn-x btn-sm-x" href="https://github.com/farzadasgari/evap" target="_blank"
+                               rel="noopener">
+                                <i class="bi bi-github" aria-hidden="true"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="project-grid reveal-group reveal">
+
+                    <article class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-cat">Climate extremes</span>
+                            <canvas data-plot="series" role="img"
+                                    aria-label="Two overlaid time series, observed and modelled"></canvas>
+                        </div>
+                        <div class="project-body">
+                            <h3>Compound drought &amp; heat events</h3>
+                            <p>
+                                Statistical modelling of concurrent drought and heat extremes, and how those compound
+                                events propagate into electricity demand.
+                            </p>
+                            <div class="badge-row">
+                                <span class="badge-x">Statistics</span>
+                                <span class="badge-x">Python</span>
+                                <span class="badge-x">Climate data</span>
+                                <span class="badge-x">Climate Extreme Events</span>
+                                <span class="badge-x">Paralellize Programming</span>
+                                <span class="badge-x">Electricity</span>
+                            </div>
+                            <div class="project-links">
+                                <a class="btn-x btn-sm-x" href="https://github.com/farzadasgari/componergy"
+                                   target="_blank"
+                                   rel="noopener">
+                                    <i class="bi bi-github" aria-hidden="true"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-thumb">
+                            <span class="project-cat">Scientific software</span>
+                            <canvas data-plot="signal" role="img"
+                                    aria-label="Noisy velocity signal with a despiked reconstruction overlaid"></canvas>
+                        </div>
+                        <div class="project-body">
+                            <h3>ProADV</h3>
+                            <p>
+                                An open Python package for acoustic Doppler velocimeter data: despiking, denoising,
+                                and turbulence analysis of raw velocity records.
+                            </p>
+                            <div class="badge-row">
+                                <span class="badge-x">Python</span>
+                                <span class="badge-x">NumPy</span>
+                                <span class="badge-x">SciPy</span>
+                                <span class="badge-x">Signal processing</span>
+                                <span class="badge-x">Kernel Density Estimation</span>
+                                <span class="badge-x">Poincaré map</span>
+                            </div>
+                            <p class="project-result mb-0">status: open source · <span class="ph">10.1016/j.softx.2024.101868</span>
+                            </p>
+                            <div class="project-links">
+                                <a class="btn-x btn-sm-x" href="https://github.com/farzadasgari/ProADV" target="_blank"
+                                   rel="noopener">
+                                    <i class="bi bi-github" aria-hidden="true"></i> Code
+                                </a>
+                                <a class="btn-x btn-sm-x"
+                                   href="https://www.sciencedirect.com/science/article/pii/S2352711024002383">
+                                    <i class="bi bi-journal-text" aria-hidden="true"></i> Paper
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <hr class="flow-rule">
     </main>
 </div>
