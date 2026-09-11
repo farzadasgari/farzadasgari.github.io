@@ -1036,3 +1036,21 @@ ul {
     height: 100%;
     display: block;
 }
+
+.live-chip {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.34rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(5, 3, 13, 0.75);
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--cyan);
+    z-index: 2;
+}
