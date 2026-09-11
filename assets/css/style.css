@@ -1675,3 +1675,15 @@ ul {
     color: var(--muted);
     margin: 0;
 }
+
+.repo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.4rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.6);
+    height: 100%;
+    transition: border-color 0.3s var(--ease-soft), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
