@@ -2012,3 +2012,7 @@ body.research-mode .telemetry {
     color: var(--cyan);
     pointer-events: none;
 }
+
+body.research-mode .hud {
+    display: flex;
+}
