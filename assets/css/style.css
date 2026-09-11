@@ -1527,3 +1527,13 @@ ul {
 .stack-row:last-child {
     border-bottom: 0;
 }
+
+.stack-label {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    padding-top: 0.4rem;
+}
