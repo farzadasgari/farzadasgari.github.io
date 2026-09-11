@@ -1616,3 +1616,9 @@ ul {
     margin-bottom: 0.9rem;
     font-weight: 700;
 }
+
+.edu-thesis {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0;
+}
