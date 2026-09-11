@@ -1543,3 +1543,16 @@ ul {
     flex-wrap: wrap;
     gap: 0.55rem;
 }
+
+.stack-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.55);
+    color: var(--muted);
+    font-size: 0.84rem;
+    transition: all 0.28s var(--ease);
+}
