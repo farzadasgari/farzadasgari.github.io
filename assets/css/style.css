@@ -297,3 +297,21 @@ ul {
     transform: translateY(-3px);
     box-shadow: var(--glow-sm);
 }
+
+.panel {
+    position: relative;
+    background: linear-gradient(160deg, rgba(22, 16, 44, 0.80) 0%, rgba(11, 7, 24, 0.72) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.55), transparent);
+}
