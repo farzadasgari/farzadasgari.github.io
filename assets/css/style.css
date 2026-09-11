@@ -505,3 +505,9 @@ ul {
 .offcanvas-nav a:hover, .offcanvas-nav a.is-active {
     color: var(--text);
 }
+
+.offcanvas-nav .idx {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--dim);
+}
