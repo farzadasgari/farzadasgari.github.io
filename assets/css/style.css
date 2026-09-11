@@ -790,3 +790,24 @@ ul {
     overflow: hidden;
     position: relative;
 }
+
+.strip::before,
+.strip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 90px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.strip::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.strip::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg), transparent);
+}
