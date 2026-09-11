@@ -1291,3 +1291,9 @@ ul {
     margin: 0 0 0.3rem;
     font-weight: 700;
 }
+
+.pub-authors {
+    font-size: 0.85rem;
+    color: var(--dim);
+    margin: 0 0 0.8rem;
+}
