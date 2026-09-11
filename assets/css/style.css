@@ -1954,3 +1954,8 @@ ul {
     cursor: pointer;
     transition: all 0.3s var(--ease);
 }
+
+.research-switch:hover {
+    color: var(--violet-electric);
+    border-color: var(--border-strong);
+}
