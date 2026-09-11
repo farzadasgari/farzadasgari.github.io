@@ -668,3 +668,36 @@ ul {
 .instrument-readout .live {
     color: var(--cyan);
 }
+
+.scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: color 0.3s var(--ease-soft);
+}
+
+.scroll-cue:hover {
+    color: var(--violet-electric);
+}
+
+.scroll-cue .rail {
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(180deg, rgba(167, 139, 250, 0.55), transparent);
+    position: relative;
+    overflow: hidden;
+}
