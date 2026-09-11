@@ -1865,3 +1865,9 @@ ul {
     color: var(--violet-electric);
     transform: translateX(3px);
 }
+
+.final {
+    position: relative;
+    text-align: center;
+    padding-block: clamp(5rem, 13vw, 10rem);
+}
