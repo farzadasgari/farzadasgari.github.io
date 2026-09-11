@@ -1895,3 +1895,10 @@ ul {
     gap: 0.7rem;
     justify-content: center;
 }
+
+.footer-x {
+    position: relative;
+    border-top: 1px solid var(--border);
+    background: rgba(5, 3, 13, 0.6);
+    padding-block: 2rem;
+}
