@@ -2055,3 +2055,11 @@ body.research-mode .hud {
     margin 0.25s var(--ease), border-color 0.25s var(--ease-soft),
     background 0.25s var(--ease-soft);
 }
+
+.cursor-ring.is-hover {
+    width: 52px;
+    height: 52px;
+    margin: -26px 0 0 -26px;
+    border-color: var(--violet-electric);
+    background: rgba(124, 58, 237, 0.10);
+}
