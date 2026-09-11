@@ -992,3 +992,16 @@ ul {
     width: 100%;
     height: clamp(220px, 34vw, 340px);
 }
+
+.fusion-legend {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
