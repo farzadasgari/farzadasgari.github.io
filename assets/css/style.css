@@ -1448,5 +1448,13 @@ ul {
     color: var(--dim);
     margin: 0;
     z-index: 1;
+}
 
+.constellation {
+    position: relative;
+    height: clamp(420px, 56vw, 560px);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: radial-gradient(70% 70% at 50% 50%, rgba(76, 29, 149, 0.26), rgba(5, 3, 13, 0.90));
+    overflow: hidden;
 }
