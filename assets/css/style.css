@@ -1133,3 +1133,18 @@ ul {
 .project-card:hover .project-thumb canvas {
     transform: scale(1.06);
 }
+
+.project-cat {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    background: rgba(5, 3, 13, 0.7);
+    padding: 0.22rem 0.5rem;
+    border-radius: 5px;
+    z-index: 2;
+}
