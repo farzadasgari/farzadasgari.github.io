@@ -1987,3 +1987,7 @@ body.research-mode .research-switch .led {
     color: var(--cyan);
     opacity: 0.8;
 }
+
+body.research-mode .telemetry {
+    display: block;
+}
