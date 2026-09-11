@@ -2022,3 +2022,7 @@ body.research-mode .hud {
     justify-content: space-between;
     gap: 1.2rem;
 }
+
+.hud .k {
+    color: rgba(34, 211, 238, 0.55);
+}
