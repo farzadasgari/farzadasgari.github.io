@@ -986,3 +986,9 @@ ul {
     background: linear-gradient(180deg, rgba(11, 7, 24, 0.85), rgba(5, 3, 13, 0.65));
     overflow: hidden;
 }
+
+#fusion-canvas {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 34vw, 340px);
+}
