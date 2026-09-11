@@ -103,3 +103,9 @@ async function updateRepoCards() {
         }
     }
 }
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateRepoCards);
+} else {
+    updateRepoCards();
+}
