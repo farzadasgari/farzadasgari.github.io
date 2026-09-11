@@ -1878,3 +1878,13 @@ ul {
     letter-spacing: -0.05em;
     margin-bottom: 1.1rem;
 }
+
+.final .formula {
+    font-family: var(--font-mono);
+    font-size: clamp(0.72rem, 1.8vw, 0.92rem);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    margin-bottom: 2.4rem;
+}
