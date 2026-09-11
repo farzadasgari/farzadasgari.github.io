@@ -872,3 +872,17 @@ ul {
 .interest-card:focus-within .interest-viz {
     opacity: 1;
 }
+
+.interest-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(124, 58, 237, 0.14);
+    border: 1px solid var(--border);
+    color: var(--violet-electric);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.35s var(--ease), background 0.35s var(--ease-soft);
+}
