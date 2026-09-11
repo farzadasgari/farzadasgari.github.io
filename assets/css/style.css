@@ -1693,3 +1693,13 @@ ul {
     transform: translateY(-4px);
     box-shadow: var(--glow-sm);
 }
+
+.repo-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.repo-head i {
+    color: var(--violet-electric);
+}
