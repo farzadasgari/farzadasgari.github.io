@@ -1729,3 +1729,14 @@ ul {
     color: var(--dim);
     letter-spacing: 0.06em;
 }
+
+.repo-stats .lang::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--violet);
+    margin-right: 0.4rem;
+    vertical-align: baseline;
+}
