@@ -1276,3 +1276,11 @@ ul {
     letter-spacing: 0.08em;
     font-weight: 700;
 }
+
+.pub-title {
+    font-size: 1.08rem;
+    font-weight: 650;
+    line-height: 1.4;
+    margin: 0 0 0.4rem;
+    max-width: 60ch;
+}
