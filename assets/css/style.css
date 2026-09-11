@@ -762,3 +762,23 @@ ul {
     border-radius: 10px;
     pointer-events: none;
 }
+
+.bio-block {
+    padding-left: 1.1rem;
+    border-left: 2px solid rgba(167, 139, 250, 0.22);
+    margin-bottom: 1.6rem;
+}
+
+.bio-block h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.015em;
+}
+
+.bio-block p {
+    color: var(--muted);
+    font-size: 0.97rem;
+    margin: 0;
+    max-width: 62ch;
+}
