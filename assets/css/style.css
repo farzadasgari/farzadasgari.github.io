@@ -1967,3 +1967,8 @@ ul {
     background: var(--dim);
     transition: all 0.3s var(--ease);
 }
+
+body.research-mode .research-switch {
+    color: var(--cyan);
+    border-color: rgba(34, 211, 238, 0.4);
+}
