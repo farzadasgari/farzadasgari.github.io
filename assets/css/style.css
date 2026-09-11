@@ -623,3 +623,12 @@ ul {
     gap: 0.6rem;
     align-items: center;
 }
+
+.hero-instrument {
+    position: relative;
+    aspect-ratio: 1;
+    isolation: isolate;
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+}
