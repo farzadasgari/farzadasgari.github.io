@@ -1972,3 +1972,8 @@ body.research-mode .research-switch {
     color: var(--cyan);
     border-color: rgba(34, 211, 238, 0.4);
 }
+
+body.research-mode .research-switch .led {
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
+}
