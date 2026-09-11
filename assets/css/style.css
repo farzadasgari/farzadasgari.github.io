@@ -1223,3 +1223,7 @@ ul {
     position: relative;
     padding-bottom: 2.4rem;
 }
+
+.tl-item:last-child {
+    padding-bottom: 0;
+}
