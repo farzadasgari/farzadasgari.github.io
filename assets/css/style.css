@@ -357,6 +357,11 @@ ul {
     font-weight: 700;
 }
 
+.badge-x:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--glow-sm);
+}
+
 .badge-row {
     display: flex;
     flex-wrap: wrap;
@@ -1404,4 +1409,10 @@ ul {
     background: rgba(18, 12, 36, 0.6);
     overflow: hidden;
     transition: transform 0.32s var(--ease), border-color 0.32s var(--ease-soft), box-shadow 0.32s var(--ease);
+}
+
+.teach-card:hover, .teach-card:focus-within {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--glow-sm);
 }
