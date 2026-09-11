@@ -1831,3 +1831,8 @@ ul {
     color: var(--violet-electric);
     flex: 0 0 auto;
 }
+
+.contact-link .meta {
+    flex: 1;
+    min-width: 0;
+}
