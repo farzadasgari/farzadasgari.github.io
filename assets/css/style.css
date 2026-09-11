@@ -541,3 +541,15 @@ ul {
     align-items: center;
     width: 100%;
 }
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    margin-bottom: 1.4rem;
+}
