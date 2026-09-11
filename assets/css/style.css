@@ -328,3 +328,10 @@ ul {
     text-transform: uppercase;
     color: var(--violet-electric);
 }
+
+.mono-dim {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
