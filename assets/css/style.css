@@ -561,3 +561,12 @@ ul {
     background: var(--cyan);
     box-shadow: 0 0 10px var(--cyan);
 }
+
+.hero-name {
+    font-size: clamp(2.9rem, 8.2vw, 5.6rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    margin: 0 0 1.1rem;
+    cursor: default;
+}
