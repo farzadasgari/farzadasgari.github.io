@@ -1556,3 +1556,8 @@ ul {
     font-size: 0.84rem;
     transition: all 0.28s var(--ease);
 }
+
+.stack-chip i {
+    color: var(--dim);
+    transition: color 0.28s var(--ease-soft);
+}
