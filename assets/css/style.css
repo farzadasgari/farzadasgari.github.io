@@ -1854,3 +1854,9 @@ ul {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.contact-link .arw {
+    color: var(--dim);
+    font-size: 0.9rem;
+    transition: transform 0.3s var(--ease), color 0.3s var(--ease-soft);
+}
