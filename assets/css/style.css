@@ -474,3 +474,19 @@ ul {
     align-items: center;
     justify-content: center;
 }
+
+.offcanvas-x {
+    background: var(--bg-2);
+    border-left: 1px solid var(--border);
+    color: var(--text);
+    width: min(320px, 86vw) !important;
+}
+
+.offcanvas-x .offcanvas-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.offcanvas-x .btn-close {
+    filter: invert(1) hue-rotate(180deg);
+    opacity: 0.75;
+}
