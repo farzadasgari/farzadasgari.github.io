@@ -1371,3 +1371,21 @@ ul {
     max-width: 66ch;
     margin-bottom: 0.7rem;
 }
+
+.exp-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 5px;
+    background: rgba(124, 58, 237, 0.14);
+    color: var(--violet-electric);
+    margin-bottom: 0.5rem;
+}
+
+.exp-tag:hover {
+    box-shadow: 0 0 10px rgb(171 130 243 / 0.65);
+}
