@@ -1747,3 +1747,14 @@ ul {
     padding-block: clamp(5rem, 12vw, 9rem);
     overflow: hidden;
 }
+
+.philosophy blockquote {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 20ch;
+    font-size: clamp(1.9rem, 5.6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+}
