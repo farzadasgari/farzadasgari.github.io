@@ -2016,3 +2016,9 @@ body.research-mode .telemetry {
 body.research-mode .hud {
     display: flex;
 }
+
+.hud .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
