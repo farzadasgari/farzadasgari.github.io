@@ -72,3 +72,8 @@
 .boot-skip:hover {
     color: var(--violet-electric);
 }
+
+.js .hero-stagger > * {
+    opacity: 0;
+    transform: translateY(18px);
+}
