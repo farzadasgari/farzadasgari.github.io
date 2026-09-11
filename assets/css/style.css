@@ -1792,3 +1792,10 @@ ul {
     max-width: 54ch;
     margin: 0 auto 2rem;
 }
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+}
