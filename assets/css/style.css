@@ -1799,3 +1799,9 @@ ul {
     gap: 0.8rem;
     justify-content: center;
 }
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+    gap: 0.9rem;
+}
