@@ -949,3 +949,12 @@ ul {
     margin-bottom: 0.28rem;
     letter-spacing: -0.01em;
 }
+
+.pipe-stage p {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    margin: 0;
+    line-height: 1.5;
+}
