@@ -531,3 +531,13 @@ ul {
     background: radial-gradient(68% 55% at 20% 48%, rgba(5, 3, 13, 0.82) 0%, rgba(5, 3, 13, 0.34) 48%, transparent 76%),
     linear-gradient(180deg, rgba(5, 3, 13, 0.55) 0%, transparent 30%, rgba(5, 3, 13, 0.90) 100%);
 }
+
+.hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    width: 100%;
+}
