@@ -832,3 +832,9 @@ ul {
     color: var(--violet-electric);
     font-size: 1.05rem;
 }
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 1.1rem;
+}
