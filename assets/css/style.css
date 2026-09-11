@@ -1312,3 +1312,9 @@ ul {
     border-radius: 14px;
     overflow: hidden;
 }
+
+.metric {
+    background: rgba(11, 7, 24, 0.92);
+    padding: 1.9rem 1.4rem;
+    text-align: center;
+}
