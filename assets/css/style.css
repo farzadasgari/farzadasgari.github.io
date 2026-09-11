@@ -891,3 +891,9 @@ ul {
     box-shadow: var(--glow-sm);
     background: rgba(124, 58, 237, 0.22);
 }
+
+.interest-card h3 {
+    font-size: 1.02rem;
+    font-weight: 650;
+    margin-bottom: 0.4rem;
+}
