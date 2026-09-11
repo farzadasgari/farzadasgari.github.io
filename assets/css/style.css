@@ -2037,3 +2037,11 @@ body.research-mode .hud {
     border-radius: 50%;
     will-change: transform;
 }
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    background: var(--violet-electric);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
+}
