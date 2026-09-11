@@ -856,3 +856,19 @@ ul {
     border-color: var(--border-strong);
     box-shadow: 0 14px 44px rgba(76, 29, 149, 0.32);
 }
+
+.interest-viz {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 108px;
+    height: 76px;
+    opacity: 0.5;
+    transition: opacity 0.4s var(--ease-soft);
+    pointer-events: none;
+}
+
+.interest-card:hover .interest-viz,
+.interest-card:focus-within .interest-viz {
+    opacity: 1;
+}
