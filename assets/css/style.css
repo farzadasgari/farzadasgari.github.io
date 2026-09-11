@@ -1554,10 +1554,22 @@ ul {
     background: rgba(18, 12, 36, 0.55);
     color: var(--muted);
     font-size: 0.84rem;
+    font-weight: 700;
     transition: all 0.28s var(--ease);
 }
 
 .stack-chip i {
     color: var(--dim);
     transition: color 0.28s var(--ease-soft);
+}
+
+.stack-chip:hover {
+    color: var(--text);
+    border-color: var(--violet-electric);
+    background: rgba(124, 58, 237, 0.16);
+    transform: translateY(-2px);
+}
+
+.stack-chip:hover i {
+    color: var(--violet-electric);
 }
