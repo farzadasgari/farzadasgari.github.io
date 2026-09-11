@@ -1189,3 +1189,10 @@ ul {
     margin-top: auto;
     padding-top: 0.4rem;
 }
+
+.timeline {
+    position: relative;
+    padding-left: 2.6rem;
+    list-style: none;
+    margin: 0;
+}
