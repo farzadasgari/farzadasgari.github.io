@@ -811,3 +811,9 @@ ul {
     right: 0;
     background: linear-gradient(270deg, var(--bg), transparent);
 }
+
+.strip-track {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+}
