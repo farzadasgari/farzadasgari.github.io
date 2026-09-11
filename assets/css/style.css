@@ -490,3 +490,18 @@ ul {
     filter: invert(1) hue-rotate(180deg);
     opacity: 0.75;
 }
+
+.offcanvas-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0.2rem;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.10);
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.offcanvas-nav a:hover, .offcanvas-nav a.is-active {
+    color: var(--text);
+}
