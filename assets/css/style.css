@@ -1268,3 +1268,11 @@ ul {
     gap: 0.6rem;
     margin-bottom: 0.45rem;
 }
+
+.pub-year {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--violet-electric);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
