@@ -739,3 +739,17 @@ ul {
     color: var(--dim);
     padding: 1.5rem;
 }
+
+.portrait-empty i {
+    font-size: 2.2rem;
+    color: rgba(167, 139, 250, 0.5);
+}
+
+.portrait-empty code {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--violet-electric);
+    background: rgba(124, 58, 237, 0.12);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+}
