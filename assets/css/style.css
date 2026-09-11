@@ -1107,3 +1107,10 @@ ul {
     transition: transform 0.35s var(--ease), border-color 0.35s var(--ease-soft),
     box-shadow 0.35s var(--ease);
 }
+
+.project-card:hover,
+.project-card:focus-within {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: 0 18px 50px rgba(76, 29, 149, 0.36);
+}
