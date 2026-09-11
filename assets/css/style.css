@@ -1362,4 +1362,12 @@ ul {
     color: var(--dim);
     letter-spacing: 0.08em;
     margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.exp-desc {
+    font-size: 0.92rem;
+    color: var(--muted);
+    max-width: 66ch;
+    margin-bottom: 0.7rem;
 }
