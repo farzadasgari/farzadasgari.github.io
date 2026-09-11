@@ -1594,3 +1594,10 @@ ul {
     border: 1px solid rgba(167, 139, 250, 0.22);
     background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent 70%);
 }
+
+.edu-degree {
+    font-size: 1.05rem;
+    font-weight: 650;
+    margin: 0 0 0.3rem;
+    padding-right: 3rem;
+}
