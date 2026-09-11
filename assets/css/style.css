@@ -511,3 +511,13 @@ ul {
     font-size: 0.7rem;
     color: var(--dim);
 }
+
+.hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: 108px;
+    padding-bottom: 5rem;
+    overflow: hidden;
+}
