@@ -1416,3 +1416,13 @@ ul {
     border-color: var(--border-strong);
     box-shadow: var(--glow-sm);
 }
+
+.teach-card canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-soft);
+    pointer-events: none;
+}
