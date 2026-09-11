@@ -1740,3 +1740,10 @@ ul {
     margin-right: 0.4rem;
     vertical-align: baseline;
 }
+
+.philosophy {
+    position: relative;
+    text-align: center;
+    padding-block: clamp(5rem, 12vw, 9rem);
+    overflow: hidden;
+}
