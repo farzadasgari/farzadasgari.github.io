@@ -1297,3 +1297,8 @@ ul {
     color: var(--dim);
     margin: 0 0 0.8rem;
 }
+
+.pub-authors strong {
+    color: var(--muted);
+    font-weight: 600;
+}
