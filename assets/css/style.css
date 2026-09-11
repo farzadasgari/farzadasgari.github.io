@@ -708,3 +708,12 @@ ul {
     gap: clamp(2rem, 5vw, 4.5rem);
     align-items: start;
 }
+
+.portrait {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, rgba(76, 29, 149, 0.30), rgba(11, 7, 24, 0.9));
+    aspect-ratio: 4 / 5;
+}
