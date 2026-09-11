@@ -632,3 +632,15 @@ ul {
     max-width: 460px;
     margin-inline: auto;
 }
+
+.hero-instrument::before {
+    content: '';
+    position: absolute;
+    inset: -8%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+    rgba(5, 3, 13, 0.88) 0%,
+    rgba(5, 3, 13, 0.62) 45%,
+    transparent 72%);
+}
