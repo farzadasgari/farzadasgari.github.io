@@ -1355,3 +1355,11 @@ ul {
     color: var(--violet-electric);
     margin: 0 0 0.15rem;
 }
+
+.exp-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+}
