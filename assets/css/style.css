@@ -942,3 +942,10 @@ ul {
     background: linear-gradient(140deg, var(--purple), var(--purple-deep));
     border-color: transparent;
 }
+
+.pipe-stage h3 {
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-bottom: 0.28rem;
+    letter-spacing: -0.01em;
+}
