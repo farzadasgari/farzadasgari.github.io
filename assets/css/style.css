@@ -1395,3 +1395,13 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 1rem;
 }
+
+.teach-card {
+    position: relative;
+    padding: 1.3rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.6);
+    overflow: hidden;
+    transition: transform 0.32s var(--ease), border-color 0.32s var(--ease-soft), box-shadow 0.32s var(--ease);
+}
