@@ -1537,3 +1537,9 @@ ul {
     color: var(--violet-electric);
     padding-top: 0.4rem;
 }
+
+.stack-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
