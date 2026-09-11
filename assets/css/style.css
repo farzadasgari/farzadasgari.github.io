@@ -1070,3 +1070,23 @@ ul {
     font-size: clamp(1.4rem, 2.6vw, 1.95rem);
     margin-bottom: 1rem;
 }
+
+.field {
+    margin-bottom: 1.05rem;
+}
+
+.field dt {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--violet-electric);
+    margin-bottom: 0.28rem;
+}
+
+.field dd {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
