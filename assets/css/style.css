@@ -1349,3 +1349,9 @@ ul {
     font-weight: 650;
     margin: 0 0 0.25rem;
 }
+
+.exp-org {
+    font-size: 0.92rem;
+    color: var(--violet-electric);
+    margin: 0 0 0.15rem;
+}
