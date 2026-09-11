@@ -1888,3 +1888,10 @@ ul {
     color: var(--violet-electric);
     margin-bottom: 2.4rem;
 }
+
+.final-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+}
