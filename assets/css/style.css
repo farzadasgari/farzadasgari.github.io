@@ -958,3 +958,13 @@ ul {
     margin: 0;
     line-height: 1.5;
 }
+
+.pipe-rail {
+    position: absolute;
+    top: calc(1.1rem + 23px);
+    left: 7%;
+    right: 7%;
+    height: 1px;
+    background: rgba(167, 139, 250, 0.18);
+    z-index: 0;
+}
