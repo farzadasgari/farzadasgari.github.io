@@ -1846,3 +1846,11 @@ ul {
     text-transform: uppercase;
     color: var(--dim);
 }
+
+.contact-link .v {
+    display: block;
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
