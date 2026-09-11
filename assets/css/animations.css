@@ -77,3 +77,7 @@
     opacity: 0;
     transform: translateY(18px);
 }
+
+body.is-booted .hero-stagger > * {
+    animation: rise 0.9s var(--ease) forwards;
+}
