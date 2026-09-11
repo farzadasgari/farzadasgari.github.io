@@ -1758,3 +1758,15 @@ ul {
     letter-spacing: -0.045em;
     line-height: 1.08;
 }
+
+.philosophy figcaption {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
