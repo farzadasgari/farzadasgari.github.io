@@ -2026,3 +2026,14 @@ body.research-mode .hud {
 .hud .k {
     color: rgba(34, 211, 238, 0.55);
 }
+
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: 50%;
+    will-change: transform;
+}
