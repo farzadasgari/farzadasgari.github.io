@@ -1573,3 +1573,12 @@ ul {
 .stack-chip:hover i {
     color: var(--violet-electric);
 }
+
+.edu-card {
+    position: relative;
+    padding: 1.7rem 1.6rem;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: linear-gradient(155deg, rgba(22, 16, 44, 0.8), rgba(11, 7, 24, 0.62));
+    height: 100%;
+}
