@@ -1703,3 +1703,11 @@ ul {
 .repo-head i {
     color: var(--violet-electric);
 }
+
+.repo-name {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
