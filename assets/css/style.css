@@ -1601,3 +1601,9 @@ ul {
     margin: 0 0 0.3rem;
     padding-right: 3rem;
 }
+
+.edu-inst {
+    color: var(--violet-electric);
+    font-size: 0.92rem;
+    margin: 0 0 0.15rem;
+}
