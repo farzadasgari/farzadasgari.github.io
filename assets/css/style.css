@@ -1514,3 +1514,12 @@ ul {
 .skill-chips {
     display: none;
 }
+
+.stack-row {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 1.4rem;
+    align-items: start;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.10);
+}
