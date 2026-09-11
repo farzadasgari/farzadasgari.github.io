@@ -1260,3 +1260,11 @@ ul {
     background: var(--violet-electric);
     box-shadow: 0 0 12px var(--violet);
 }
+
+.pub-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.45rem;
+}
