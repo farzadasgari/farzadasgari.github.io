@@ -1817,3 +1817,11 @@ ul {
     color: var(--text);
     transition: all 0.3s var(--ease);
 }
+
+.contact-link:hover {
+    color: var(--text);
+    border-color: var(--violet-electric);
+    background: rgba(124, 58, 237, 0.14);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-sm);
+}
