@@ -1458,3 +1458,10 @@ ul {
     background: radial-gradient(70% 70% at 50% 50%, rgba(76, 29, 149, 0.26), rgba(5, 3, 13, 0.90));
     overflow: hidden;
 }
+
+#constellation-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
