@@ -1196,3 +1196,14 @@ ul {
     list-style: none;
     margin: 0;
 }
+
+.timeline-spine {
+    position: absolute;
+    left: 11px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: rgba(167, 139, 250, 0.16);
+    border-radius: 2px;
+    overflow: hidden;
+}
