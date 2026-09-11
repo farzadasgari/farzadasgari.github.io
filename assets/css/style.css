@@ -1339,3 +1339,7 @@ ul {
     color: var(--muted);
     line-height: 1.5;
 }
+
+.exp-item .tl-node {
+    background: var(--bg-2);
+}
