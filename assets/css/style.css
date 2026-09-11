@@ -1241,3 +1241,12 @@ ul {
     border: 1px solid var(--border-strong);
     transition: box-shadow 0.45s var(--ease), border-color 0.45s var(--ease-soft);
 }
+
+.tl-node::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(167, 139, 250, 0.4);
+    transition: background 0.45s var(--ease-soft), box-shadow 0.45s var(--ease);
+}
