@@ -1114,3 +1114,11 @@ ul {
     border-color: var(--border-strong);
     box-shadow: 0 18px 50px rgba(76, 29, 149, 0.36);
 }
+
+.project-thumb {
+    position: relative;
+    height: 152px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(80% 80% at 70% 10%, rgba(124, 58, 237, 0.34), rgba(5, 3, 13, 0.9));
+}
