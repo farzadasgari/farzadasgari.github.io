@@ -968,3 +968,12 @@ ul {
     background: rgba(167, 139, 250, 0.18);
     z-index: 0;
 }
+
+.pipe-rail-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--purple), var(--violet-electric), var(--cyan));
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
+    transition: width 1.6s var(--ease);
+}
