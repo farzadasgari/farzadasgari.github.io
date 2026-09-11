@@ -1250,3 +1250,13 @@ ul {
     background: rgba(167, 139, 250, 0.4);
     transition: background 0.45s var(--ease-soft), box-shadow 0.45s var(--ease);
 }
+
+.tl-item.is-lit .tl-node {
+    border-color: var(--violet-electric);
+    box-shadow: 0 0 0 5px rgba(124, 58, 237, 0.10);
+}
+
+.tl-item.is-lit .tl-node::after {
+    background: var(--violet-electric);
+    box-shadow: 0 0 12px var(--violet);
+}
