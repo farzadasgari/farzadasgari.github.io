@@ -1836,3 +1836,13 @@ ul {
     flex: 1;
     min-width: 0;
 }
+
+.contact-link .k {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
