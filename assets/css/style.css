@@ -1977,3 +1977,13 @@ body.research-mode .research-switch .led {
     background: var(--cyan);
     box-shadow: 0 0 10px var(--cyan);
 }
+
+.telemetry {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    opacity: 0.8;
+}
