@@ -388,3 +388,33 @@ ul {
     justify-content: space-between;
     gap: 1rem;
 }
+
+.brand-x {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--purple), var(--purple-deep));
+    display: grid;
+    place-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: var(--glow-sm);
+}
+
+.brand-x:hover {
+    color: var(--text);
+}
