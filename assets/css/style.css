@@ -1902,3 +1902,11 @@ ul {
     background: rgba(5, 3, 13, 0.6);
     padding-block: 2rem;
 }
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
