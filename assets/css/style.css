@@ -782,3 +782,11 @@ ul {
     margin: 0;
     max-width: 62ch;
 }
+
+.strip {
+    border-block: 1px solid var(--border);
+    background: rgba(11, 7, 24, 0.55);
+    padding-block: 1.15rem;
+    overflow: hidden;
+    position: relative;
+}
