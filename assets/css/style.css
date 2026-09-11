@@ -1438,3 +1438,15 @@ ul {
     margin: 0 0 0.3rem;
     z-index: 1;
 }
+
+.teach-card p {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    margin: 0;
+    z-index: 1;
+
+}
