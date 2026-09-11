@@ -1430,3 +1430,11 @@ ul {
 .teach-card:hover canvas, .teach-card:focus-within canvas {
     opacity: 0.55;
 }
+
+.teach-card h3 {
+    position: relative;
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+    z-index: 1;
+}
