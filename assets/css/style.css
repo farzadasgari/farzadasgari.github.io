@@ -977,3 +977,12 @@ ul {
     box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
     transition: width 1.6s var(--ease);
 }
+
+.fusion {
+    position: relative;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(11, 7, 24, 0.85), rgba(5, 3, 13, 0.65));
+    overflow: hidden;
+}
