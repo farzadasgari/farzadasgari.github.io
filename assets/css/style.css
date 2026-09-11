@@ -193,7 +193,7 @@ ul {
 
 .sec-index {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--violet-electric);
@@ -201,6 +201,7 @@ ul {
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    font-weight: 700;
 }
 
 .sec-index::after {
@@ -350,7 +351,7 @@ ul {
     background: rgba(124, 58, 237, 0.10);
     color: var(--violet-electric);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.04em;
     white-space: nowrap;
     font-weight: 700;
@@ -548,11 +549,12 @@ ul {
     align-items: center;
     gap: 0.6rem;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--violet-electric);
     margin-bottom: 1.4rem;
+    font-weight: 700;
 }
 
 .hero-eyebrow .dot {
@@ -660,10 +662,11 @@ ul {
     display: flex;
     gap: 1.1rem;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     letter-spacing: 0.14em;
     color: var(--dim);
     white-space: nowrap;
+    font-weight: 700;
 }
 
 .instrument-readout .live {
@@ -681,8 +684,9 @@ ul {
     align-items: center;
     gap: 0.55rem;
     font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-size: 0.74rem;
     letter-spacing: 0.22em;
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--dim);
     background: none;
@@ -946,14 +950,15 @@ ul {
 
 .pipe-stage h3 {
     font-size: 0.86rem;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 0.28rem;
     letter-spacing: -0.01em;
 }
 
 .pipe-stage p {
     font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-size: 0.74rem;
+    font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--dim);
     margin: 0;
