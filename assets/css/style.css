@@ -918,3 +918,19 @@ ul {
     text-align: center;
     padding: 1.1rem 0.4rem 0;
 }
+
+.pipe-node {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 0.9rem;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: rgba(18, 12, 36, 0.9);
+    border: 1px solid var(--border-strong);
+    color: var(--violet-electric);
+    font-size: 1.15rem;
+    z-index: 2;
+    transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease), color 0.4s var(--ease-soft);
+}
