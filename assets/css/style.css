@@ -1343,3 +1343,9 @@ ul {
 .exp-item .tl-node {
     background: var(--bg-2);
 }
+
+.exp-role {
+    font-size: 1.06rem;
+    font-weight: 650;
+    margin: 0 0 0.25rem;
+}
