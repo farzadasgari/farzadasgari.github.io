@@ -73,3 +73,33 @@ function saveToCache(key, data) {
         console.error('Cache write error:', e);
     }
 }
+
+
+async function updateRepoCards() {
+    const cards = document.querySelectorAll('.repo-card');
+
+    for (const card of cards) {
+        const href = card.getAttribute('href');
+        if (!href || !href.includes('github.com')) continue;
+
+        const match = href.match(/github\.com\/([^/]+)\/([^/]+)(?:\/|$)/);
+        if (!match) continue;
+
+        const [, owner, repo] = match;
+        const stats = await fetchRepoStats(owner, repo);
+
+        const statsDiv = card.querySelector('.repo-stats');
+        if (statsDiv) {
+            const placeholders = statsDiv.querySelectorAll('.ph');
+            for (const el of placeholders) {
+                if (el.textContent === '[STARS]') {
+                    el.textContent = stats.stars;
+                    el.classList.remove('ph');
+                } else if (el.textContent === '[COMMITS]') {
+                    el.textContent = stats.commits;
+                    el.classList.remove('ph');
+                }
+            }
+        }
+    }
+}
