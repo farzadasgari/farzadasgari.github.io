@@ -315,3 +315,8 @@ ul {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.55), transparent);
 }
+
+.panel-notch {
+    border-radius: 14px;
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
