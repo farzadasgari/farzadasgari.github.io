@@ -1389,3 +1389,9 @@ ul {
 .exp-tag:hover {
     box-shadow: 0 0 10px rgb(171 130 243 / 0.65);
 }
+
+.teach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+}
