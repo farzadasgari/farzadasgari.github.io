@@ -418,3 +418,40 @@ ul {
 .brand-x:hover {
     color: var(--text);
 }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.nav-link-x {
+    position: relative;
+    padding: 0.45rem 0.78rem;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.25s var(--ease-soft), background 0.25s var(--ease-soft);
+}
+
+.nav-link-x:hover {
+    color: var(--text);
+    background: rgba(124, 58, 237, 0.12);
+}
+
+.nav-link-x.is-active {
+    color: var(--text);
+}
+
+.nav-link-x.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0.78rem;
+    right: 0.78rem;
+    bottom: 0.16rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--violet);
+    box-shadow: 0 0 10px var(--purple);
+}
