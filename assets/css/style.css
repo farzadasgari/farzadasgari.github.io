@@ -341,3 +341,22 @@ ul {
     border-bottom: 1px dashed rgba(167, 139, 250, 0.45);
     font-style: normal;
 }
+
+.badge-x {
+    display: inline-block;
+    padding: 0.28rem 0.68rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(124, 58, 237, 0.10);
+    color: var(--violet-electric);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
