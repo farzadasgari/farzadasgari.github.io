@@ -1061,3 +1061,12 @@ ul {
     border-radius: 50%;
     background: var(--cyan);
 }
+
+.featured-body {
+    padding: clamp(1.6rem, 3.2vw, 2.6rem);
+}
+
+.featured-body h3 {
+    font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+    margin-bottom: 1rem;
+}
