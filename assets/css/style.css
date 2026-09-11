@@ -1622,3 +1622,14 @@ ul {
     color: var(--muted);
     margin: 0;
 }
+
+.award-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.55);
+    height: 100%;
+    transition: border-color 0.3s var(--ease-soft), transform 0.3s var(--ease);
+}
