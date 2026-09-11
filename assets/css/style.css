@@ -1482,3 +1482,10 @@ ul {
     transition: color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft),
     box-shadow 0.3s var(--ease), background 0.3s var(--ease-soft);
 }
+
+.skill-node:hover, .skill-node:focus-visible, .skill-node.is-lit {
+    color: var(--text);
+    border-color: var(--violet-electric);
+    background: rgba(124, 58, 237, 0.2);
+    box-shadow: var(--glow-sm);
+}
