@@ -726,3 +726,16 @@ ul {
     height: 100%;
     object-fit: cover;
 }
+
+.portrait-empty {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    color: var(--dim);
+    padding: 1.5rem;
+}
