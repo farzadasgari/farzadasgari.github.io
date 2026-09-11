@@ -849,3 +849,10 @@ ul {
     transition: transform 0.35s var(--ease), border-color 0.35s var(--ease-soft),
     box-shadow 0.35s var(--ease);
 }
+
+.interest-card:hover,
+.interest-card:focus-within {
+    transform: translateY(-5px);
+    border-color: var(--border-strong);
+    box-shadow: 0 14px 44px rgba(76, 29, 149, 0.32);
+}
