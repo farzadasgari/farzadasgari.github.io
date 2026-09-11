@@ -886,3 +886,8 @@ ul {
     margin-bottom: 1rem;
     transition: box-shadow 0.35s var(--ease), background 0.35s var(--ease-soft);
 }
+
+.interest-card:hover .interest-icon {
+    box-shadow: var(--glow-sm);
+    background: rgba(124, 58, 237, 0.22);
+}
