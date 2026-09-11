@@ -609,3 +609,11 @@ ul {
     max-width: 56ch;
     margin-bottom: 2rem;
 }
+
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
