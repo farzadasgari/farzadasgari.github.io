@@ -1910,3 +1910,23 @@ ul {
     justify-content: space-between;
     gap: 1rem;
 }
+
+.footer-id {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.footer-name {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.footer-tag {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+}
