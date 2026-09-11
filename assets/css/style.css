@@ -1770,3 +1770,14 @@ ul {
     text-transform: uppercase;
     color: var(--dim);
 }
+
+.cta-panel {
+    position: relative;
+    text-align: center;
+    padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+    border-radius: 20px;
+    border: 1px solid var(--border-strong);
+    background: radial-gradient(90% 120% at 50% 0%, rgba(76, 29, 149, 0.45), transparent 65%),
+    linear-gradient(180deg, rgba(22, 16, 44, 0.85), rgba(11, 7, 24, 0.7));
+    overflow: hidden;
+}
