@@ -1582,3 +1582,15 @@ ul {
     background: linear-gradient(155deg, rgba(22, 16, 44, 0.8), rgba(11, 7, 24, 0.62));
     height: 100%;
 }
+
+.edu-card::after {
+    content: '';
+    position: absolute;
+    right: 1.3rem;
+    top: 1.3rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(167, 139, 250, 0.22);
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.18), transparent 70%);
+}
