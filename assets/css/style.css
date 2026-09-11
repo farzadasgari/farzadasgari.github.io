@@ -1523,3 +1523,7 @@ ul {
     padding: 1.2rem 0;
     border-bottom: 1px solid rgba(167, 139, 250, 0.10);
 }
+
+.stack-row:last-child {
+    border-bottom: 0;
+}
