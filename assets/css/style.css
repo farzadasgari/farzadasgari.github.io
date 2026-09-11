@@ -353,6 +353,7 @@ ul {
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     white-space: nowrap;
+    font-weight: 700;
 }
 
 .badge-row {
@@ -1167,4 +1168,19 @@ ul {
     color: var(--muted);
     margin: 0;
     line-height: 1.58;
+}
+
+.project-result {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+    padding-top: 0.15rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.4rem;
 }
