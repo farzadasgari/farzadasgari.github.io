@@ -577,3 +577,28 @@ ul {
     margin-bottom: 1.4rem;
     overflow: hidden;
 }
+
+.role-item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.05rem, 2.6vw, 1.5rem);
+    font-weight: 600;
+    color: var(--violet-electric);
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.62s var(--ease), transform 0.62s var(--ease);
+    pointer-events: none;
+}
+
+.role-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.role-item.is-leaving {
+    opacity: 0;
+    transform: translateY(-14px);
+}
