@@ -1465,3 +1465,20 @@ ul {
     width: 100%;
     height: 100%;
 }
+
+.skill-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 0.4rem 0.78rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(11, 7, 24, 0.88);
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: default;
+    z-index: 2;
+    transition: color 0.3s var(--ease-soft), border-color 0.3s var(--ease-soft),
+    box-shadow 0.3s var(--ease), background 0.3s var(--ease-soft);
+}
