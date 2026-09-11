@@ -1284,3 +1284,10 @@ ul {
     margin: 0 0 0.4rem;
     max-width: 60ch;
 }
+
+.pub-venue {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0 0 0.3rem;
+    font-weight: 700;
+}
