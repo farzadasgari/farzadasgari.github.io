@@ -602,3 +602,10 @@ ul {
     opacity: 0;
     transform: translateY(-14px);
 }
+
+.hero-desc {
+    font-size: clamp(1rem, 1.6vw, 1.12rem);
+    color: var(--muted);
+    max-width: 56ch;
+    margin-bottom: 2rem;
+}
