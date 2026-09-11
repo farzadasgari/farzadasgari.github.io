@@ -1638,3 +1638,16 @@ ul {
     border-color: var(--border-strong);
     transform: translateY(-3px);
 }
+
+.award-medal {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(140deg, rgba(124, 58, 237, 0.35), rgba(76, 29, 149, 0.2));
+    border: 1px solid var(--border-strong);
+    color: var(--violet-electric);
+    font-size: 1.05rem;
+}
