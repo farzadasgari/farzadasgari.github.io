@@ -455,3 +455,22 @@ ul {
     background: var(--violet);
     box-shadow: 0 0 10px var(--purple);
 }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.6);
+    color: var(--text);
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+}
