@@ -45,3 +45,17 @@ async function fetchRepoStats(owner, repo) {
         return {stars: '—', commits: '—'};
     }
 }
+
+function getFromCache(key) {
+    try {
+        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+        const cached = cache[key];
+
+        if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+            return cached.data;
+        }
+    } catch (e) {
+        console.error('Cache read error:', e);
+    }
+    return null;
+}
