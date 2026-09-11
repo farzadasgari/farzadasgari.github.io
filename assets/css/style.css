@@ -934,3 +934,11 @@ ul {
     z-index: 2;
     transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease), color 0.4s var(--ease-soft);
 }
+
+.pipe-stage.is-lit .pipe-node {
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12), var(--glow-md);
+    transform: translateY(-3px);
+    color: #fff;
+    background: linear-gradient(140deg, var(--purple), var(--purple-deep));
+    border-color: transparent;
+}
