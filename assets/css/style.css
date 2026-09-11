@@ -1009,3 +1009,14 @@ ul {
 .fusion-legend span.on {
     color: var(--violet-electric);
 }
+
+.featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 0;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: linear-gradient(150deg, rgba(22, 16, 44, 0.9), rgba(11, 7, 24, 0.8));
+    margin-bottom: 1.6rem;
+}
