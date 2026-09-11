@@ -753,3 +753,12 @@ ul {
     padding: 0.25rem 0.5rem;
     border-radius: 5px;
 }
+
+.portrait-frame {
+    position: absolute;
+    z-index: 3;
+    inset: 10px;
+    border: 1px solid rgba(167, 139, 250, 0.18);
+    border-radius: 10px;
+    pointer-events: none;
+}
