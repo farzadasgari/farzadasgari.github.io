@@ -897,3 +897,10 @@ ul {
     font-weight: 650;
     margin-bottom: 0.4rem;
 }
+
+.interest-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.55;
+}
