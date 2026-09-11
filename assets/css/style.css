@@ -1805,3 +1805,15 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
     gap: 0.9rem;
 }
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.1rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(18, 12, 36, 0.55);
+    color: var(--text);
+    transition: all 0.3s var(--ease);
+}
