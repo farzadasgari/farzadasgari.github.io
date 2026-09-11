@@ -1959,3 +1959,11 @@ ul {
     color: var(--violet-electric);
     border-color: var(--border-strong);
 }
+
+.research-switch .led {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--dim);
+    transition: all 0.3s var(--ease);
+}
