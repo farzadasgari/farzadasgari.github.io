@@ -1489,3 +1489,24 @@ ul {
     background: rgba(124, 58, 237, 0.2);
     box-shadow: var(--glow-sm);
 }
+
+.skill-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.42), rgba(11, 7, 24, 0.92));
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--glow-md);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    color: var(--text);
+}
