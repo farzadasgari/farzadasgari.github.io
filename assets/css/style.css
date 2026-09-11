@@ -1825,3 +1825,9 @@ ul {
     transform: translateY(-3px);
     box-shadow: var(--glow-sm);
 }
+
+.contact-link i:first-child {
+    font-size: 1.3rem;
+    color: var(--violet-electric);
+    flex: 0 0 auto;
+}
