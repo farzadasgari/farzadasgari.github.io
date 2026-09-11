@@ -1711,3 +1711,10 @@ ul {
     color: var(--text);
     letter-spacing: -0.01em;
 }
+
+.repo-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin: 0;
+    flex: 1;
+}
