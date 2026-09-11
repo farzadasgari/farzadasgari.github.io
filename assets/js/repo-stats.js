@@ -59,3 +59,17 @@ function getFromCache(key) {
     }
     return null;
 }
+
+
+function saveToCache(key, data) {
+    try {
+        const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+        cache[key] = {
+            data,
+            timestamp: Date.now()
+        };
+        localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+    } catch (e) {
+        console.error('Cache write error:', e);
+    }
+}
