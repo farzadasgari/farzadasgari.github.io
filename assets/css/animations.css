@@ -121,3 +121,10 @@ body.is-booted .hero-instrument {
         transform: translateY(0);
     }
 }
+
+@keyframes instrument-in {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
