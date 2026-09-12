@@ -233,3 +233,12 @@ body.is-booted .hero-instrument {
     background: linear-gradient(180deg, transparent, var(--violet-electric));
     animation: rail-drop 2.2s var(--ease-soft) infinite;
 }
+
+.hero-name .ch {
+    display: inline-block;
+    transition: transform 0.4s var(--ease), text-shadow 0.4s var(--ease);
+}
+
+.hero-name:hover .ch {
+    text-shadow: 0 0 26px rgba(167, 139, 250, 0.55);
+}
