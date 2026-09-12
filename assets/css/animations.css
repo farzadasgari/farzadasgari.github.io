@@ -142,3 +142,7 @@ body.is-booted .hero-instrument {
     transform: none;
     filter: blur(0);
 }
+
+.reveal-group.is-visible > * {
+    animation: rise 0.75s var(--ease) both;
+}
