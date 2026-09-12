@@ -69,6 +69,14 @@
                     if (b) b.click();
                 }
             };
+
+            if (global.console && global.console.log) {
+                console.log(
+                    '%c  Farzad Asgari — water × climate × data × AI × science  ',
+                    'background:#7C3AED;color:#fff;padding:6px 10px;border-radius:4px;font-weight:600'
+                );
+                console.log('Try __lab.research() to switch on research mode.');
+            }
         }
     })
 })(window);
