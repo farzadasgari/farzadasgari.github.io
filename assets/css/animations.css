@@ -211,3 +211,25 @@ body.is-booted .hero-instrument {
 .live-chip .pulse {
     animation: pulse-dot 2.4s var(--ease-soft) infinite;
 }
+
+@keyframes rail-drop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.scroll-cue .rail::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent, var(--violet-electric));
+    animation: rail-drop 2.2s var(--ease-soft) infinite;
+}
