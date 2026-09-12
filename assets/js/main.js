@@ -61,6 +61,14 @@
                 } catch (e) {
                 }
             }
+
+            global.__lab = {
+                field: field,
+                research: function () {
+                    const b = document.querySelector('[data-research-toggle]');
+                    if (b) b.click();
+                }
+            };
         }
     })
 })(window);
