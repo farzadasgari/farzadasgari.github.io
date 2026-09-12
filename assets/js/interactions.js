@@ -76,3 +76,49 @@
             io.observe(s);
         });
     }
+
+    function cursor() {
+        const fine = global.matchMedia && global.matchMedia('(pointer: fine)').matches;
+        if (!fine || REDUCED) return;
+
+        const dot = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className = 'cursor-dot';
+        ring.className = 'cursor-ring';
+        dot.setAttribute('aria-hidden', 'true');
+        ring.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        let mx = -100, my = -100, rx = -100, ry = -100, raf;
+
+        global.addEventListener('pointermove', function (e) {
+            if (e.pointerType === 'touch') return;
+            mx = e.clientX;
+            my = e.clientY;
+            dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+        }, {passive: true});
+
+        (function loop() {
+            raf = requestAnimationFrame(loop);
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+        })();
+
+        const interactive = 'a, button, .skill-node, .project-card, .interest-card, .contact-link, [role="button"], input, summary';
+        document.addEventListener('pointerover', function (e) {
+            if (e.target.closest && e.target.closest(interactive)) ring.classList.add('is-hover');
+        });
+        document.addEventListener('pointerout', function (e) {
+            if (e.target.closest && e.target.closest(interactive)) ring.classList.remove('is-hover');
+        });
+        document.addEventListener('pointerleave', function () {
+            dot.style.opacity = '0';
+            ring.style.opacity = '0';
+        });
+        document.addEventListener('pointerenter', function () {
+            dot.style.opacity = '1';
+            ring.style.opacity = '1';
+        });
+    }
