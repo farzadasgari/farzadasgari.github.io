@@ -815,7 +815,7 @@
             }
 
 
-            for (i = 0; i < lattice.length; i++) {
+            for (let i = 0; i < lattice.length; i++) {
                 let n = lattice[i];
                 let rr = 2.4 + n.act * 3.4;
                 ctx.fillStyle = n.act > 0.3 ? rgba(VIOLET, 0.85) : rgba(PURPLE, 0.42);
@@ -998,12 +998,209 @@
         }
     }
 
+    function Constellation(root, canvas) {
+        let ctx = canvas.getContext('2d');
+        let nodes = [], raf = null, w = 0, h = 0, t = 0, running = false;
+        let hovered = null;
+
+        let SKILLS = [
+            {n: 'Python', ring: 1, group: 'code'},
+            {n: 'Machine Learning', ring: 1, group: 'ai'},
+            {n: 'Deep Learning', ring: 1, group: 'ai'},
+            {n: 'Signal Processing', ring: 1, group: 'sci'},
+            {n: 'Remote Sensing', ring: 1, group: 'sci'},
+            {n: 'TensorFlow', ring: 2, group: 'ai'},
+            {n: 'Keras', ring: 2, group: 'ai'},
+            {n: 'NumPy', ring: 2, group: 'code'},
+            {n: 'Pandas', ring: 2, group: 'code'},
+            {n: 'MATLAB', ring: 2, group: 'sci'},
+            {n: 'Django', ring: 2, group: 'web'},
+            {n: 'JavaScript', ring: 2, group: 'web'},
+            {n: 'Google Earth Engine', ring: 2, group: 'sci'},
+            {n: 'Git', ring: 2, group: 'infra'},
+            {n: 'Linux', ring: 2, group: 'infra'},
+            {n: 'Docker', ring: 2, group: 'infra'},
+            {n: 'PostgreSQL', ring: 2, group: 'infra'}
+        ];
+
+        let EDGES = [
+            ['Python', 'Machine Learning'], ['Python', 'NumPy'], ['Python', 'Pandas'],
+            ['Python', 'Django'], ['Machine Learning', 'Deep Learning'],
+            ['Deep Learning', 'TensorFlow'], ['TensorFlow', 'Keras'],
+            ['Machine Learning', 'Signal Processing'], ['Signal Processing', 'MATLAB'],
+            ['Remote Sensing', 'Google Earth Engine'], ['Remote Sensing', 'Deep Learning'],
+            ['Django', 'PostgreSQL'], ['Django', 'JavaScript'], ['Git', 'Linux'],
+            ['Linux', 'Docker'], ['Docker', 'Django'], ['NumPy', 'Pandas'],
+            ['Signal Processing', 'NumPy']
+        ];
+
+        function place() {
+            let rect = root.getBoundingClientRect();
+            w = rect.width;
+            h = rect.height;
+            let cx = w / 2, cy = h / 2;
+            let r1 = Math.min(w, h) * 0.27;
+            let r2 = Math.min(w, h) * 0.44;
+            let ring1 = SKILLS.filter(function (s) {
+                return s.ring === 1;
+            });
+            let ring2 = SKILLS.filter(function (s) {
+                return s.ring === 2;
+            });
+
+            nodes.forEach(function (nd) {
+                if (nd.el.parentNode) nd.el.parentNode.removeChild(nd.el);
+            });
+            nodes = [];
+
+            function add(list, radius, offset) {
+                list.forEach(function (s, i) {
+                    let ang = (i / list.length) * Math.PI * 2 + offset;
+                    let x = cx + Math.cos(ang) * radius * (w / Math.min(w, h)) * 0.86;
+                    let y = cy + Math.sin(ang) * radius;
+                    let el = document.createElement('button');
+                    el.type = 'button';
+                    el.className = 'skill-node';
+                    el.textContent = s.n;
+                    el.style.left = x + 'px';
+                    el.style.top = y + 'px';
+                    el.setAttribute('data-skill', s.n);
+                    root.appendChild(el);
+                    let nd = {name: s.n, x: x, y: y, el: el, phase: rand(0, Math.PI * 2), act: 0};
+                    el.addEventListener('mouseenter', function () {
+                        hovered = nd;
+                        highlight();
+                    });
+                    el.addEventListener('mouseleave', function () {
+                        hovered = null;
+                        highlight();
+                    });
+                    el.addEventListener('focus', function () {
+                        hovered = nd;
+                        highlight();
+                    });
+                    el.addEventListener('blur', function () {
+                        hovered = null;
+                        highlight();
+                    });
+                    nodes.push(nd);
+                });
+            }
+
+            add(ring1, r1, -Math.PI / 2);
+            add(ring2, r2, -Math.PI / 2 + 0.3);
+        }
+
+        function related(name) {
+            let out = {};
+            EDGES.forEach(function (e) {
+                if (e[0] === name) out[e[1]] = 1;
+                if (e[1] === name) out[e[0]] = 1;
+            });
+            return out;
+        }
+
+        function highlight() {
+            let rel = hovered ? related(hovered.name) : null;
+            nodes.forEach(function (nd) {
+                let on = rel && (rel[nd.name] || nd === hovered);
+                nd.el.classList.toggle('is-lit', !!on);
+            });
+        }
+
+        function find(name) {
+            for (let i = 0; i < nodes.length; i++) if (nodes[i].name === name) return nodes[i];
+            return null;
+        }
+
+        function resize() {
+            fit(canvas, ctx, 2);
+            place();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            let cx = w / 2, cy = h / 2;
+            let rel = hovered ? related(hovered.name) : null;
+
+            nodes.forEach(function (nd) {
+                let lit = rel && (rel[nd.name] || nd === hovered);
+                ctx.strokeStyle = rgba(PURPLE, lit ? 0.30 : 0.09);
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(cx, cy);
+                ctx.lineTo(nd.x, nd.y);
+                ctx.stroke();
+            });
+
+            EDGES.forEach(function (e) {
+                let a = find(e[0]), b = find(e[1]);
+                if (!a || !b) return;
+                let lit = hovered && (a === hovered || b === hovered);
+                ctx.strokeStyle = lit ? rgba(VIOLET, 0.55) : rgba(VIOLET, 0.13);
+                ctx.lineWidth = lit ? 1.4 : 1;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.stroke();
+            });
+
+
+            if (!REDUCED) {
+                t += 0.006;
+                EDGES.forEach(function (e, i) {
+                    let a = find(e[0]), b = find(e[1]);
+                    if (!a || !b) return;
+                    let p = (t * (0.6 + (i % 5) * 0.12) + i * 0.17) % 1;
+                    let x = lerp(a.x, b.x, p), y = lerp(a.y, b.y, p);
+                    let br = Math.sin(p * Math.PI);
+                    ctx.fillStyle = rgba(VIOLET, 0.42 * br);
+                    ctx.beginPath();
+                    ctx.arc(x, y, 1.8, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+        }
+
+        function frame() {
+            raf = requestAnimationFrame(frame);
+            draw();
+        }
+
+        resize();
+        global.addEventListener('resize', (function () {
+            let to;
+            return function () {
+                clearTimeout(to);
+                to = setTimeout(resize, 200);
+            };
+        })());
+
+        if (REDUCED) {
+            draw();
+        } else {
+            whenVisible(root, function () {
+                if (!running) {
+                    running = true;
+                    raf = requestAnimationFrame(frame);
+                }
+            }, function () {
+                if (running) {
+                    cancelAnimationFrame(raf);
+                    running = false;
+                }
+            });
+        }
+    }
+
+
     global.NN = {
         reduced: REDUCED,
         tier: deviceTier,
         NeuralField: NeuralField,
         NeuralSphere: NeuralSphere,
         FusionFlow: FusionFlow,
+        Constellation: Constellation,
     };
 
 })(window);
