@@ -241,6 +241,18 @@
         });
     }
 
+    function misc() {
+        const y = $('#year');
+        if (y) y.textContent = new Date().getFullYear();
+
+        const portrait = $('#portrait-img');
+        if (portrait) {
+            portrait.addEventListener('error', function () {
+                portrait.style.display = 'none';
+            });
+        }
+    }
+
     global.UI = {
         init: function (field) {
             nav();
@@ -250,6 +262,7 @@
             microViz();
             researchMode(field);
             easterEggs(field);
+            misc();
         }
     };
 
