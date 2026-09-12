@@ -136,3 +136,9 @@ body.is-booted .hero-instrument {
     transition: opacity 0.85s var(--ease), transform 0.85s var(--ease), filter 0.85s var(--ease);
     will-change: opacity, transform;
 }
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+}
