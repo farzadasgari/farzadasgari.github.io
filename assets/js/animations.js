@@ -219,6 +219,58 @@
             els.forEach(function (el) {
                 io.observe(el);
             });
+
+            function timelines() {
+                const lists = $$('.timeline');
+                if (!lists.length) return;
+
+                if ('IntersectionObserver' in global) {
+                    const io = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            e.target.classList.toggle('is-lit', e.isIntersecting);
+                        });
+                    }, {threshold: 0.35, rootMargin: '-15% 0px -25% 0px'});
+                    $$('.tl-item').forEach(function (el) {
+                        io.observe(el);
+                    });
+                } else {
+                    $$('.tl-item').forEach(function (el) {
+                        el.classList.add('is-lit');
+                    });
+                }
+
+                if (REDUCED) {
+                    lists.forEach(function (l) {
+                        const f = l.querySelector('.timeline-spine-fill');
+                        if (f) f.style.height = '100%';
+                    });
+                    return;
+                }
+
+                let ticking = false;
+
+                function update() {
+                    ticking = false;
+                    const vh = global.innerHeight;
+                    lists.forEach(function (list) {
+                        const fill = list.querySelector('.timeline-spine-fill');
+                        if (!fill) return;
+                        const r = list.getBoundingClientRect();
+                        const start = vh * 0.75;
+                        const progress = (start - r.top) / (r.height || 1);
+                        fill.style.height = Math.max(0, Math.min(1, progress)) * 100 + '%';
+                    });
+                }
+
+                global.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        ticking = true;
+                        requestAnimationFrame(update);
+                    }
+                }, {passive: true});
+                global.addEventListener('resize', update);
+                update();
+            }
         }
     }
 })(window);
