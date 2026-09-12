@@ -269,4 +269,13 @@ body.is-booted .hero-instrument {
         filter: none !important;
         animation: none !important;
     }
+
+    .strip-track {
+        animation: none;
+    }
+
+    .scroll-cue .rail::after {
+        animation: none;
+        opacity: 0.6;
+    }
 }
