@@ -1193,6 +1193,201 @@
         }
     }
 
+    function MicroViz(canvas, kind) {
+        let ctx = canvas.getContext('2d');
+        let w, h, raf = null, t = 0;
+
+        function resize() {
+            let s = fit(canvas, ctx, 1.75);
+            w = s.w;
+            h = s.h;
+        }
+
+        let draw = {
+            net: function () {
+                let pts = [];
+                for (let i = 0; i < 9; i++) {
+                    pts.push({
+                        x: (0.18 + (i % 3) * 0.32) * w,
+                        y: (0.22 + Math.floor(i / 3) * 0.28) * h
+                    });
+                }
+                for (let a = 0; a < pts.length; a++) {
+                    for (let b = 0; b < pts.length; b++) {
+                        if (Math.floor(b / 3) !== Math.floor(a / 3) + 1) continue;
+                        ctx.strokeStyle = rgba(PURPLE, 0.22 + Math.sin(t * 0.05 + a + b) * 0.14);
+                        ctx.beginPath();
+                        ctx.moveTo(pts[a].x, pts[a].y);
+                        ctx.lineTo(pts[b].x, pts[b].y);
+                        ctx.stroke();
+                    }
+                }
+                pts.forEach(function (p, i) {
+                    let act = 0.4 + Math.sin(t * 0.06 + i) * 0.35;
+                    ctx.fillStyle = rgba(VIOLET, act);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            },
+            wave: function () {
+                ctx.strokeStyle = rgba(VIOLET, 0.55);
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                for (let x = 0; x <= w; x += 2) {
+                    let k = x / w;
+                    let y = h / 2 +
+                        Math.sin(k * 9 + t * 0.05) * h * 0.18 +
+                        Math.sin(k * 23 + t * 0.09) * h * 0.08;
+                    if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+                ctx.strokeStyle = rgba(CYAN, 0.20);
+                ctx.beginPath();
+                for (let x2 = 0; x2 <= w; x2 += 3) {
+                    let k2 = x2 / w;
+                    let y2 = h / 2 + Math.sin(k2 * 15 - t * 0.04) * h * 0.10;
+                    if (x2 === 0) ctx.moveTo(x2, y2); else ctx.lineTo(x2, y2);
+                }
+                ctx.stroke();
+            },
+            orbit: function () {
+                let cx = w * 0.5, cy = h * 0.55, r = Math.min(w, h) * 0.30;
+                ctx.strokeStyle = rgba(PURPLE, 0.35);
+                ctx.beginPath();
+                ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.strokeStyle = rgba(VIOLET, 0.16);
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, r * 1.6, r * 0.6, 0.4, 0, Math.PI * 2);
+                ctx.stroke();
+                let ang = t * 0.03;
+                let sx = cx + Math.cos(ang) * r * 1.6 * Math.cos(0.4) - Math.sin(ang) * r * 0.6 * Math.sin(0.4);
+                let sy = cy + Math.cos(ang) * r * 1.6 * Math.sin(0.4) + Math.sin(ang) * r * 0.6 * Math.cos(0.4);
+                ctx.fillStyle = rgba(CYAN, 0.9);
+                ctx.beginPath();
+                ctx.arc(sx, sy, 2.4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = rgba(CYAN, 0.18);
+                ctx.beginPath();
+                ctx.moveTo(sx, sy);
+                ctx.lineTo(cx, cy);
+                ctx.stroke();
+            },
+            chart: function () {
+                let n = 7;
+                for (let i = 0; i < n; i++) {
+                    let bh = (0.22 + Math.abs(Math.sin(t * 0.03 + i * 0.7)) * 0.55) * h;
+                    let bw = w / n * 0.5;
+                    ctx.fillStyle = rgba(VIOLET, 0.28 + (i / n) * 0.35);
+                    ctx.fillRect((i + 0.25) * (w / n), h * 0.85 - bh, bw, bh);
+                }
+                ctx.strokeStyle = rgba(VIOLET, 0.25);
+                ctx.beginPath();
+                ctx.moveTo(0, h * 0.85);
+                ctx.lineTo(w, h * 0.85);
+                ctx.stroke();
+            },
+            flow: function () {
+                for (let l = 0; l < 5; l++) {
+                    ctx.strokeStyle = rgba(CYAN, 0.10 + l * 0.05);
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    for (let x = 0; x <= w; x += 4) {
+                        let k = x / w;
+                        let y = h * (0.24 + l * 0.13) +
+                            Math.sin(k * 7 + t * 0.04 + l * 0.6) * h * 0.055;
+                        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                    }
+                    ctx.stroke();
+                }
+                let px = ((t * 1.6) % (w + 20)) - 10;
+                ctx.fillStyle = rgba(CYAN, 0.7);
+                ctx.beginPath();
+                ctx.arc(px, h * 0.5 + Math.sin(px / w * 7 + t * 0.04) * h * 0.055, 2, 0, Math.PI * 2);
+                ctx.fill();
+            },
+            grid: function () {
+                let step = Math.max(10, w / 9);
+                ctx.strokeStyle = rgba(PURPLE, 0.18);
+                for (let x = 0; x < w; x += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, h);
+                    ctx.stroke();
+                }
+                for (let y = 0; y < h; y += step) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y);
+                    ctx.lineTo(w, y);
+                    ctx.stroke();
+                }
+                let cx = (0.5 + Math.sin(t * 0.02) * 0.3) * w;
+                let cy = (0.5 + Math.cos(t * 0.025) * 0.3) * h;
+                let g = ctx.createRadialGradient(cx, cy, 0, cx, cy, w * 0.3);
+                g.addColorStop(0, rgba(VIOLET, 0.5));
+                g.addColorStop(1, rgba(VIOLET, 0));
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, w, h);
+            },
+            scatter: function () {
+                for (let i = 0; i < 22; i++) {
+                    let sx = (0.08 + ((i * 37) % 100) / 118) * w;
+                    let sy = h * 0.85 - (sx / w) * h * 0.6 +
+                        Math.sin(i * 2.3 + t * 0.02) * h * 0.12;
+                    ctx.fillStyle = rgba(i % 4 === 0 ? CYAN : VIOLET, 0.5);
+                    ctx.beginPath();
+                    ctx.arc(sx, sy, 1.8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.strokeStyle = rgba(VIOLET, 0.4);
+                ctx.setLineDash([3, 3]);
+                ctx.beginPath();
+                ctx.moveTo(0.05 * w, h * 0.82);
+                ctx.lineTo(0.95 * w, h * 0.24);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+        };
+
+        function render() {
+            ctx.clearRect(0, 0, w, h);
+            (draw[kind] || draw.net)();
+        }
+
+        function frame() {
+            raf = requestAnimationFrame(frame);
+            t += 1;
+            render();
+        }
+
+        resize();
+        render();
+
+        global.addEventListener('resize', (function () {
+            let to;
+            return function () {
+                clearTimeout(to);
+                to = setTimeout(function () {
+                    resize();
+                    render();
+                }, 220);
+            };
+        })());
+
+        return {
+            start: function () {
+                if (!raf && !REDUCED) frame();
+            },
+            stop: function () {
+                if (raf) {
+                    cancelAnimationFrame(raf);
+                    raf = null;
+                }
+                render();
+            }
+        };
+    }
 
     global.NN = {
         reduced: REDUCED,
