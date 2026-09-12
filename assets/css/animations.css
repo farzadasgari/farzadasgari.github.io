@@ -114,3 +114,10 @@ body.is-booted .hero-stagger > *:nth-child(6) {
 body.is-booted .hero-instrument {
     animation: instrument-in 1.4s var(--ease) 0.4s forwards;
 }
+
+@keyframes rise {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
