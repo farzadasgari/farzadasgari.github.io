@@ -200,11 +200,32 @@
         }, {passive: true});
     }
 
+    function microViz() {
+        if (!global.NN) return;
+
+        $$('[data-viz]').forEach(function (canvas) {
+            const kind = canvas.getAttribute('data-viz');
+            const viz = global.NN.MicroViz(canvas, kind);
+            const host = canvas.closest('.interest-card, .teach-card') || canvas.parentElement;
+            if (!host || REDUCED) return;
+
+            host.addEventListener('mouseenter', viz.start);
+            host.addEventListener('mouseleave', viz.stop);
+            host.addEventListener('focusin', viz.start);
+            host.addEventListener('focusout', viz.stop);
+        });
+
+        $$('[data-plot]').forEach(function (canvas) {
+            global.NN.StaticPlot(canvas, canvas.getAttribute('data-plot'));
+        });
+    }
+
     global.UI = {
         init: function (field) {
             nav();
             scrollspy();
             cursor();
+            microViz();
             researchMode(field);
             easterEggs(field);
         }
