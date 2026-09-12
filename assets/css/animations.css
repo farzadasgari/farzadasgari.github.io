@@ -278,4 +278,12 @@ body.is-booted .hero-instrument {
         animation: none;
         opacity: 0.6;
     }
+
+    .cursor-dot, .cursor-ring {
+        display: none !important;
+    }
+
+    .boot {
+        display: none;
+    }
 }
