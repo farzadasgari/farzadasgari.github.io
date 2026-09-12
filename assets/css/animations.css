@@ -128,3 +128,11 @@ body.is-booted .hero-instrument {
         transform: scale(1);
     }
 }
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(6px);
+    transition: opacity 0.85s var(--ease), transform 0.85s var(--ease), filter 0.85s var(--ease);
+    will-change: opacity, transform;
+}
