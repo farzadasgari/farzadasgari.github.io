@@ -220,11 +220,33 @@
         });
     }
 
+    function anchors() {
+        $$('a[href^="#"]').forEach(function (a) {
+            const id = a.getAttribute('href');
+            if (!id || id === '#') return;
+            a.addEventListener('click', function (e) {
+                const target = document.querySelector(id);
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: REDUCED ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+                target.setAttribute('tabindex', '-1');
+                setTimeout(function () {
+                    target.focus({preventScroll: true});
+                }, 400);
+                if (history.replaceState) history.replaceState(null, '', id);
+            });
+        });
+    }
+
     global.UI = {
         init: function (field) {
             nav();
             scrollspy();
             cursor();
+            anchors();
             microViz();
             researchMode(field);
             easterEggs(field);
