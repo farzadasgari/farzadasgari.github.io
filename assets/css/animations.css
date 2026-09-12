@@ -178,3 +178,16 @@ body.is-booted .hero-instrument {
 .reveal-group.is-visible > *:nth-child(8) {
     animation-delay: 0.49s;
 }
+
+@keyframes strip-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.strip-track {
+    animation: strip-scroll 42s linear infinite;
+}
