@@ -246,3 +246,18 @@ body.is-booted .hero-instrument {
 .metric-value.is-counting {
     filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.4));
 }
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
