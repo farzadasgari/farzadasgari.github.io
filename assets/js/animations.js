@@ -307,6 +307,29 @@
                 }, {threshold: 0.35});
                 io.observe(pipe);
             }
+
+            function rotator() {
+                const items = $$('.role-item');
+                if (items.length < 2) {
+                    if (items[0]) items[0].classList.add('is-active');
+                    return;
+                }
+                let i = 0;
+                items[0].classList.add('is-active');
+                if (REDUCED) return;
+
+                setInterval(function () {
+                    const cur = items[i];
+                    i = (i + 1) % items.length;
+                    const next = items[i];
+                    cur.classList.remove('is-active');
+                    cur.classList.add('is-leaving');
+                    next.classList.add('is-active');
+                    setTimeout(function () {
+                        cur.classList.remove('is-leaving');
+                    }, 700);
+                }, 3200);
+            }
         }
     }
 })(window);
