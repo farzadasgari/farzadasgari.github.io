@@ -271,6 +271,42 @@
                 global.addEventListener('resize', update);
                 update();
             }
+
+            function pipeline() {
+                const pipe = document.querySelector('.pipeline');
+                if (!pipe) return;
+                const stages = $$('.pipe-stage', pipe);
+                const fill = pipe.querySelector('.pipe-rail-fill');
+                let played = false;
+
+                function play() {
+                    if (played) return;
+                    played = true;
+                    if (fill) {
+                        if (global.innerWidth <= 991) fill.style.height = '100%';
+                        else fill.style.width = '100%';
+                    }
+                    stages.forEach(function (s, i) {
+                        setTimeout(function () {
+                            s.classList.add('is-lit');
+                        }, REDUCED ? 0 : i * 190);
+                    });
+                }
+
+                if (REDUCED || !('IntersectionObserver' in global)) {
+                    play();
+                    return;
+                }
+                const io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            play();
+                            io.disconnect();
+                        }
+                    });
+                }, {threshold: 0.35});
+                io.observe(pipe);
+            }
         }
     }
 })(window);
