@@ -242,3 +242,7 @@ body.is-booted .hero-instrument {
 .hero-name:hover .ch {
     text-shadow: 0 0 26px rgba(167, 139, 250, 0.55);
 }
+
+.metric-value.is-counting {
+    filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.4));
+}
