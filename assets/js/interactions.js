@@ -54,3 +54,25 @@
             });
         }
     }
+
+    function scrollspy() {
+        const sections = $$('section[id]');
+        const links = $$('[data-nav]');
+        if (!sections.length || !links.length) return;
+
+        if (!('IntersectionObserver' in global)) return;
+
+        const io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                const id = e.target.id;
+                links.forEach(function (l) {
+                    l.classList.toggle('is-active', l.getAttribute('href') === '#' + id);
+                });
+            });
+        }, {rootMargin: '-45% 0px -50% 0px'});
+
+        sections.forEach(function (s) {
+            io.observe(s);
+        });
+    }
