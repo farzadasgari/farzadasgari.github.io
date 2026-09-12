@@ -20,7 +20,7 @@
         set: function (k, v) {
             try {
                 localStorage.setItem(k, v);
-            } catch (e) { /* private mode */
+            } catch (e) {
             }
         }
     };

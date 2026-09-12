@@ -519,10 +519,207 @@
         };
     };
 
+    function NeuralSphere(canvas) {
+        let ctx = canvas.getContext('2d');
+        let pts = [], flows = [], raf = null, w = 0, h = 0, rot = 0, running = false;
+        let N = deviceTier() === 'mobile' ? 40 : 68;
+        let SYMBOLS = ['∂', '∇', 'Σ', 'λ', 'f(x)', 'AI', 'ML', 'CNN', 'LSTM', 'σ', 'μ'];
+
+        function build() {
+            pts = [];
+
+            let golden = Math.PI * (3 - Math.sqrt(5));
+            for (let i = 0; i < N; i++) {
+                let y = 1 - (i / (N - 1)) * 2;
+                let r = Math.sqrt(Math.max(0, 1 - y * y));
+                let th = golden * i;
+                pts.push({
+                    x: Math.cos(th) * r, y: y, z: Math.sin(th) * r,
+                    act: 0, phase: rand(0, Math.PI * 2)
+                });
+            }
+            flows = [];
+            for (let f = 0; f < (deviceTier() === 'mobile' ? 4 : 8); f++) {
+                flows.push({
+                    a: (Math.random() * N) | 0,
+                    b: (Math.random() * N) | 0,
+                    p: Math.random(),
+                    speed: rand(0.004, 0.011)
+                });
+            }
+        }
+
+        function resize() {
+            let s = fit(canvas, ctx, 2);
+            w = s.w;
+            h = s.h;
+        }
+
+        function project(p, radius) {
+            let cos = Math.cos(rot), sin = Math.sin(rot);
+            let x = p.x * cos - p.z * sin;
+            let z = p.x * sin + p.z * cos;
+            let y = p.y * Math.cos(0.32) - z * Math.sin(0.32);
+            let z2 = p.y * Math.sin(0.32) + z * Math.cos(0.32);
+            let persp = 1 / (2.4 - z2);
+            return {
+                x: w / 2 + x * radius * persp * 2.2,
+                y: h / 2 + y * radius * persp * 2.2,
+                z: z2,
+                scale: persp * 2.2
+            };
+        }
+
+        function frame(t) {
+            raf = requestAnimationFrame(frame);
+            rot += 0.0022;
+            ctx.clearRect(0, 0, w, h);
+            let radius = Math.min(w, h) * 0.30;
+            let proj = [];
+            let i;
+
+            for (i = 0; i < pts.length; i++) {
+                pts[i].act *= 0.972;
+                proj.push(project(pts[i], radius));
+            }
+
+
+            let maxD = radius * 0.62;
+            for (i = 0; i < pts.length; i++) {
+                for (let j = i + 1; j < pts.length; j++) {
+                    let dx = proj[i].x - proj[j].x, dy = proj[i].y - proj[j].y;
+                    let d = Math.sqrt(dx * dx + dy * dy);
+                    if (d > maxD) continue;
+                    let depth = (proj[i].z + proj[j].z) / 2;
+                    let a = (1 - d / maxD) * 0.22 * (0.35 + (depth + 1) / 2);
+                    ctx.strokeStyle = rgba(PURPLE, a);
+                    ctx.lineWidth = 0.8;
+                    ctx.beginPath();
+                    ctx.moveTo(proj[i].x, proj[i].y);
+                    ctx.lineTo(proj[j].x, proj[j].y);
+                    ctx.stroke();
+                }
+            }
+
+
+            for (let f = 0; f < flows.length; f++) {
+                let fl = flows[f];
+                fl.p += fl.speed;
+                if (fl.p >= 1) {
+                    pts[fl.b].act = 1;
+                    fl.a = fl.b;
+                    fl.b = (Math.random() * pts.length) | 0;
+                    fl.p = 0;
+                }
+                let pa = proj[fl.a], pb = proj[fl.b];
+                let e = easeOut(fl.p);
+                let px = lerp(pa.x, pb.x, e), py = lerp(pa.y, pb.y, e);
+                let bright = Math.sin(fl.p * Math.PI);
+                let g = ctx.createRadialGradient(px, py, 0, px, py, 9);
+                g.addColorStop(0, rgba(VIOLET, 0.9 * bright));
+                g.addColorStop(1, rgba(VIOLET, 0));
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(px, py, 9, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+
+            let order = proj.map(function (p, idx) {
+                return idx;
+            })
+                .sort(function (a, b) {
+                    return proj[a].z - proj[b].z;
+                });
+            for (i = 0; i < order.length; i++) {
+                let k = order[i];
+                let p = proj[k], src = pts[k];
+                let depthA = (p.z + 1) / 2;
+                let a = 0.18 + depthA * 0.45 + src.act * 0.5;
+                let r = (0.9 + depthA * 1.5) + src.act * 2;
+                ctx.fillStyle = src.act > 0.3 ? rgba(VIOLET, a) : rgba(PURPLE, a);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+
+            ctx.font = '10px "JetBrains Mono", monospace';
+            for (let s = 0; s < SYMBOLS.length; s++) {
+                let ang = (s / SYMBOLS.length) * Math.PI * 2 + rot * 0.55;
+                let orb = radius * 1.72;
+                let sx = w / 2 + Math.cos(ang) * orb;
+                let sy = h / 2 + Math.sin(ang) * orb * 0.62;
+                let fade = 0.10 + Math.max(0, Math.sin(ang + Math.PI / 2)) * 0.18;
+                ctx.fillStyle = rgba(VIOLET, fade);
+                ctx.textAlign = 'center';
+                ctx.fillText(SYMBOLS[s], sx, sy);
+            }
+
+
+            ctx.strokeStyle = rgba(VIOLET, 0.10);
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(w / 2, h / 2, radius * 1.42, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        function staticFrame() {
+            resize();
+            rot = 0.6;
+            let radius = Math.min(w, h) * 0.30;
+            ctx.clearRect(0, 0, w, h);
+            let proj = pts.map(function (p) {
+                return project(p, radius);
+            });
+            for (let i = 0; i < pts.length; i++) {
+                for (let j = i + 1; j < pts.length; j++) {
+                    let dx = proj[i].x - proj[j].x, dy = proj[i].y - proj[j].y;
+                    let d = Math.hypot(dx, dy);
+                    if (d > radius * 0.62) continue;
+                    ctx.strokeStyle = rgba(PURPLE, (1 - d / (radius * 0.62)) * 0.18);
+                    ctx.beginPath();
+                    ctx.moveTo(proj[i].x, proj[i].y);
+                    ctx.lineTo(proj[j].x, proj[j].y);
+                    ctx.stroke();
+                }
+            }
+            proj.forEach(function (p) {
+                ctx.fillStyle = rgba(PURPLE, 0.4);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        build();
+        resize();
+        global.addEventListener('resize', function () {
+            resize();
+        });
+
+        if (REDUCED) {
+            staticFrame();
+        } else {
+            whenVisible(canvas, function () {
+                if (!running) {
+                    running = true;
+                    raf = requestAnimationFrame(frame);
+                }
+            }, function () {
+                if (running) {
+                    cancelAnimationFrame(raf);
+                    running = false;
+                }
+            });
+        }
+    }
+
     global.NN = {
         reduced: REDUCED,
         tier: deviceTier,
         NeuralField: NeuralField,
+        NeuralSphere: NeuralSphere,
     };
 
 })(window);
