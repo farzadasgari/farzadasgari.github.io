@@ -1389,6 +1389,89 @@
         };
     }
 
+    function StaticPlot(canvas, kind) {
+        let ctx = canvas.getContext('2d');
+
+        function render() {
+            let s = fit(canvas, ctx, 2);
+            let w = s.w, h = s.h, i;
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.strokeStyle = rgba(VIOLET, 0.07);
+            ctx.lineWidth = 1;
+            for (i = 1; i < 5; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, (i / 5) * h);
+                ctx.lineTo(w, (i / 5) * h);
+                ctx.stroke();
+            }
+
+            if (kind === 'series') {
+                let seedA = [0.42, 0.5, 0.38, 0.62, 0.55, 0.72, 0.6, 0.78, 0.68, 0.84, 0.74, 0.9];
+                [[seedA, VIOLET, 0.9, 0], [seedA, CYAN, 0.55, 0.06]].forEach(function (cfg) {
+                    ctx.strokeStyle = rgba(cfg[1], cfg[2]);
+                    ctx.lineWidth = 1.6;
+                    ctx.beginPath();
+                    cfg[0].forEach(function (v, idx) {
+                        let x = (idx / (cfg[0].length - 1)) * w;
+                        let y = h - (v + cfg[3] * Math.sin(idx)) * h * 0.72 - h * 0.1;
+                        if (idx === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                    });
+                    ctx.stroke();
+                });
+            } else if (kind === 'heat') {
+                let cols = 26, rows = 15;
+                for (i = 0; i < cols; i++) {
+                    for (let j = 0; j < rows; j++) {
+                        let v = (Math.sin(i * 0.7) * Math.cos(j * 0.9) + 1) / 2;
+                        ctx.fillStyle = 'rgba(' + Math.round(lerp(76, 167, v)) + ',' +
+                            Math.round(lerp(29, 139, v)) + ',' + Math.round(lerp(149, 250, v)) + ',' +
+                            (0.10 + v * 0.42) + ')';
+                        ctx.fillRect(i * (w / cols), j * (h / rows), w / cols - 1, h / rows - 1);
+                    }
+                }
+            } else if (kind === 'signal') {
+                ctx.strokeStyle = rgba(VIOLET, 0.28);
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                for (let x = 0; x <= w; x += 2) {
+                    let k = x / w;
+                    let noise = Math.sin(k * 40) * 0.06 + Math.sin(k * 97) * 0.04;
+                    let spike = (k > 0.31 && k < 0.335) || (k > 0.68 && k < 0.70) ? 0.30 : 0;
+                    let y = h / 2 + (Math.sin(k * 8) * 0.22 + noise + spike) * h;
+                    if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+                ctx.strokeStyle = rgba(CYAN, 0.8);
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                for (let x2 = 0; x2 <= w; x2 += 2) {
+                    let k2 = x2 / w;
+                    let y2 = h / 2 + Math.sin(k2 * 8) * 0.22 * h;
+                    if (x2 === 0) ctx.moveTo(x2, y2); else ctx.lineTo(x2, y2);
+                }
+                ctx.stroke();
+            }
+
+            ctx.strokeStyle = rgba(VIOLET, 0.30);
+            ctx.lineWidth = 1;
+            [[0, 0, 1, 1], [w, 0, -1, 1], [0, h, 1, -1], [w, h, -1, -1]].forEach(function (c) {
+                ctx.beginPath();
+                ctx.moveTo(c[0] + 10 * c[2], c[1]);
+                ctx.lineTo(c[0], c[1]);
+                ctx.lineTo(c[0], c[1] + 10 * c[3]);
+                ctx.stroke();
+            });
+        }
+
+        render();
+        let to;
+        global.addEventListener('resize', function () {
+            clearTimeout(to);
+            to = setTimeout(render, 250);
+        });
+    }
+
     global.NN = {
         reduced: REDUCED,
         tier: deviceTier,
@@ -1396,6 +1479,8 @@
         NeuralSphere: NeuralSphere,
         FusionFlow: FusionFlow,
         Constellation: Constellation,
+        MicroViz: MicroViz,
+        StaticPlot: StaticPlot
     };
 
 })(window);
