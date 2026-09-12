@@ -330,6 +330,31 @@
                     }, 700);
                 }, 3200);
             }
+
+            function heroFade() {
+                const hero = document.querySelector('.hero-grid');
+                if (!hero || REDUCED) return;
+                let ticking = false;
+
+                function update() {
+                    ticking = false;
+                    const y = global.scrollY || 0;
+                    const vh = global.innerHeight;
+                    if (y > vh) return;
+                    const p = Math.min(y / (vh * 0.8), 1);
+                    hero.style.opacity = String(1 - p * 0.9);
+                    hero.style.transform = 'translateY(' + (p * 40) + 'px)';
+                }
+
+                global.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        ticking = true;
+                        requestAnimationFrame(update);
+                    }
+                }, {passive: true});
+            }
+
+
         }
     }
 })(window);
