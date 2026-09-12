@@ -260,4 +260,13 @@ body.is-booted .hero-instrument {
         transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
     }
+
+    .reveal,
+    .hero-stagger > *,
+    .hero-instrument {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        animation: none !important;
+    }
 }
