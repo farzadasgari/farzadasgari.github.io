@@ -195,3 +195,19 @@ body.is-booted .hero-instrument {
 .strip:hover .strip-track {
     animation-play-state: paused;
 }
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.35;
+        transform: scale(0.75);
+    }
+}
+
+.hero-eyebrow .dot,
+.live-chip .pulse {
+    animation: pulse-dot 2.4s var(--ease-soft) infinite;
+}
