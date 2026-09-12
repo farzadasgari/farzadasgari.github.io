@@ -105,3 +105,8 @@ body.is-booted .hero-stagger > *:nth-child(5) {
 body.is-booted .hero-stagger > *:nth-child(6) {
     animation-delay: 0.60s;
 }
+
+.js .hero-instrument {
+    opacity: 0;
+    transform: scale(0.94);
+}
