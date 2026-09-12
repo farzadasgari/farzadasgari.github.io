@@ -177,5 +177,48 @@
                 io.observe(el);
             });
         }
+
+        function counters() {
+            const els = $$('[data-count]');
+            if (!els.length) return;
+
+            function run(el) {
+                const target = parseFloat(el.getAttribute('data-count'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                if (isNaN(target)) {
+                    el.textContent = el.getAttribute('data-label') || '';
+                    return;
+                }
+                if (REDUCED) {
+                    el.textContent = target + suffix;
+                    return;
+                }
+
+                const dur = 1500, t0 = performance.now();
+                el.classList.add('is-counting');
+                (function step(now) {
+                    const p = Math.min((now - t0) / dur, 1);
+                    const eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.round(target * eased) + (p === 1 ? suffix : '');
+                    if (p < 1) requestAnimationFrame(step);
+                    else el.classList.remove('is-counting');
+                })(t0);
+            }
+
+            if (!('IntersectionObserver' in global)) {
+                els.forEach(run);
+                return;
+            }
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    run(e.target);
+                    io.unobserve(e.target);
+                });
+            }, {threshold: 0.5});
+            els.forEach(function (el) {
+                io.observe(el);
+            });
+        }
     }
 })(window);
