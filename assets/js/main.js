@@ -33,5 +33,34 @@
             if (b) b.classList.add('is-done');
             document.body.style.removeProperty('overflow');
         }, 5000);
+
+        if (global.UI) global.UI.init(field);
+
+        if (NN) {
+            const sphere = document.getElementById('sphere-canvas');
+            if (sphere) {
+                try {
+                    NN.NeuralSphere(sphere);
+                } catch (e) {
+                }
+            }
+
+            const fusion = document.getElementById('fusion-canvas');
+            if (fusion) {
+                try {
+                    NN.FusionFlow(fusion);
+                } catch (e) {
+                }
+            }
+
+            const constellation = document.getElementById('constellation');
+            const cCanvas = document.getElementById('constellation-canvas');
+            if (constellation && cCanvas && global.innerWidth > 767) {
+                try {
+                    NN.Constellation(constellation, cCanvas);
+                } catch (e) {
+                }
+            }
+        }
     })
 })(window);
