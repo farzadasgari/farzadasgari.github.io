@@ -715,11 +715,295 @@
         }
     }
 
+    function FusionFlow(canvas) {
+        let ctx = canvas.getContext('2d');
+        let w = 0, h = 0, raf = null, running = false;
+        let drops = [], lattice = [], bars = [], t = 0;
+        let BARS = 9;
+
+        function build() {
+            lattice = [];
+            let cols = 3, rows = 4;
+            for (let c = 0; c < cols; c++) {
+                for (let r = 0; r < rows; r++) {
+                    lattice.push({
+                        x: 0.40 + c * 0.085,
+                        y: 0.22 + (r / (rows - 1)) * 0.56 + (c % 2 ? 0.04 : 0),
+                        act: 0, col: c
+                    });
+                }
+            }
+            bars = [];
+            for (let b = 0; b < BARS; b++) bars.push({v: rand(0.08, 0.3), target: rand(0.1, 0.4)});
+            drops = [];
+        }
+
+        function resize() {
+            let s = fit(canvas, ctx, 2);
+            w = s.w;
+            h = s.h;
+        }
+
+        function spawn() {
+            drops.push({
+                x: -0.03,
+                y: rand(0.28, 0.72),
+                base: 0,
+                phase: rand(0, Math.PI * 2),
+                speed: rand(0.0022, 0.0042),
+                state: 'water',
+                node: null,
+                next: null,
+                p: 0,
+                r: rand(1.2, 2.6)
+            });
+            drops[drops.length - 1].base = drops[drops.length - 1].y;
+        }
+
+        function nearestNode(y) {
+            let best = null, bd = 9;
+            for (let i = 0; i < lattice.length; i++) {
+                if (lattice[i].col !== 0) continue;
+                let d = Math.abs(lattice[i].y - y);
+                if (d < bd) {
+                    bd = d;
+                    best = lattice[i];
+                }
+            }
+            return best;
+        }
+
+        function nextNode(node) {
+            let opts = lattice.filter(function (n) {
+                return n.col === node.col + 1;
+            });
+            if (!opts.length) return null;
+            return opts[(Math.random() * opts.length) | 0];
+        }
+
+        function frame() {
+            raf = requestAnimationFrame(frame);
+            t += 1;
+            ctx.clearRect(0, 0, w, h);
+
+            if (drops.length < 46 && Math.random() < 0.30) spawn();
+
+
+            ctx.strokeStyle = rgba(VIOLET, 0.07);
+            ctx.lineWidth = 1;
+            [0.36, 0.68].forEach(function (x) {
+                ctx.beginPath();
+                ctx.moveTo(x * w, h * 0.12);
+                ctx.lineTo(x * w, h * 0.88);
+                ctx.stroke();
+            });
+
+
+            for (let i = 0; i < lattice.length; i++) {
+                let a = lattice[i];
+                a.act *= 0.94;
+                for (let j = 0; j < lattice.length; j++) {
+                    let b = lattice[j];
+                    if (b.col !== a.col + 1) continue;
+                    let alpha = 0.06 + Math.max(a.act, b.act) * 0.28;
+                    ctx.strokeStyle = rgba(PURPLE, alpha);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x * w, a.y * h);
+                    ctx.lineTo(b.x * w, b.y * h);
+                    ctx.stroke();
+                }
+            }
+
+
+            for (i = 0; i < lattice.length; i++) {
+                let n = lattice[i];
+                let rr = 2.4 + n.act * 3.4;
+                ctx.fillStyle = n.act > 0.3 ? rgba(VIOLET, 0.85) : rgba(PURPLE, 0.42);
+                ctx.beginPath();
+                ctx.arc(n.x * w, n.y * h, rr, 0, Math.PI * 2);
+                ctx.fill();
+                if (n.act > 0.2) {
+                    let g = ctx.createRadialGradient(n.x * w, n.y * h, 0, n.x * w, n.y * h, 18);
+                    g.addColorStop(0, rgba(VIOLET, n.act * 0.3));
+                    g.addColorStop(1, rgba(VIOLET, 0));
+                    ctx.fillStyle = g;
+                    ctx.beginPath();
+                    ctx.arc(n.x * w, n.y * h, 18, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+
+            for (let d = drops.length - 1; d >= 0; d--) {
+                let p = drops[d];
+
+                if (p.state === 'water') {
+                    p.x += p.speed;
+
+                    p.y = p.base + Math.sin(t * 0.03 + p.phase + p.x * 8) * 0.045;
+                    if (p.x >= 0.40) {
+                        p.node = nearestNode(p.y);
+                        p.next = p.node ? nextNode(p.node) : null;
+                        p.state = p.next ? 'signal' : 'data';
+                        p.p = 0;
+                        if (p.node) p.node.act = 1;
+                    }
+                    let trail = ctx.createLinearGradient((p.x - 0.05) * w, 0, p.x * w, 0);
+                    trail.addColorStop(0, rgba(CYAN, 0));
+                    trail.addColorStop(1, rgba(CYAN, 0.28));
+                    ctx.strokeStyle = trail;
+                    ctx.lineWidth = p.r;
+                    ctx.beginPath();
+                    ctx.moveTo((p.x - 0.05) * w, p.y * h);
+                    ctx.lineTo(p.x * w, p.y * h);
+                    ctx.stroke();
+                    ctx.fillStyle = rgba(CYAN, 0.55);
+                    ctx.beginPath();
+                    ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
+                    ctx.fill();
+
+                } else if (p.state === 'signal') {
+                    p.p += 0.028;
+                    let e = easeOut(p.p);
+                    p.x = lerp(p.node.x, p.next.x, e);
+                    p.y = lerp(p.node.y, p.next.y, e);
+                    if (p.p >= 1) {
+                        p.next.act = 1;
+                        let onward = nextNode(p.next);
+                        if (onward) {
+                            p.node = p.next;
+                            p.next = onward;
+                            p.p = 0;
+                        } else {
+                            p.state = 'data';
+                        }
+                    }
+                    let br = Math.sin(p.p * Math.PI) * 0.9 + 0.1;
+                    let gg = ctx.createRadialGradient(p.x * w, p.y * h, 0, p.x * w, p.y * h, 8);
+                    gg.addColorStop(0, rgba(VIOLET, br));
+                    gg.addColorStop(1, rgba(VIOLET, 0));
+                    ctx.fillStyle = gg;
+                    ctx.beginPath();
+                    ctx.arc(p.x * w, p.y * h, 8, 0, Math.PI * 2);
+                    ctx.fill();
+
+                } else {
+                    p.x += 0.006;
+                    let targetBar = clamp(Math.floor((p.y - 0.15) / (0.7 / BARS)), 0, BARS - 1);
+                    let barX = 0.72 + (targetBar / BARS) * 0.26;
+                    p.y = lerp(p.y, 0.82, 0.05);
+                    p.x = lerp(p.x, barX, 0.06);
+                    ctx.fillStyle = rgba(VIOLET, 0.6);
+                    ctx.beginPath();
+                    ctx.arc(p.x * w, p.y * h, 1.8, 0, Math.PI * 2);
+                    ctx.fill();
+                    if (Math.abs(p.x - barX) < 0.01 && p.y > 0.79) {
+                        bars[targetBar].target = clamp(bars[targetBar].target + 0.09, 0.1, 0.62);
+                        drops.splice(d, 1);
+                        continue;
+                    }
+                }
+
+                if (p.x > 1.05) drops.splice(d, 1);
+            }
+
+
+            let bw = (0.26 * w) / BARS;
+            for (let b = 0; b < BARS; b++) {
+                let bar = bars[b];
+                bar.target *= 0.995;
+                bar.v = lerp(bar.v, bar.target, 0.07);
+                let bx = 0.72 * w + b * bw;
+                let bh = bar.v * h;
+                let grad = ctx.createLinearGradient(0, 0.84 * h - bh, 0, 0.84 * h);
+                grad.addColorStop(0, rgba(VIOLET, 0.72));
+                grad.addColorStop(1, rgba(PURPLE, 0.16));
+                ctx.fillStyle = grad;
+                ctx.fillRect(bx, 0.84 * h - bh, bw * 0.62, bh);
+            }
+
+            ctx.strokeStyle = rgba(VIOLET, 0.22);
+            ctx.beginPath();
+            ctx.moveTo(0.70 * w, 0.84 * h);
+            ctx.lineTo(0.99 * w, 0.84 * h);
+            ctx.stroke();
+
+
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.textAlign = 'left';
+            ctx.fillStyle = rgba(CYAN, 0.42);
+            ctx.fillText('PHYSICAL FLOW', 0.03 * w, 0.14 * h);
+            ctx.fillStyle = rgba(VIOLET, 0.42);
+            ctx.fillText('NEURAL MODEL', 0.40 * w, 0.14 * h);
+            ctx.fillText('PREDICTION', 0.72 * w, 0.14 * h);
+        }
+
+        function staticFrame() {
+            resize();
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < lattice.length; i++) {
+                let a = lattice[i];
+                for (let j = 0; j < lattice.length; j++) {
+                    let b = lattice[j];
+                    if (b.col !== a.col + 1) continue;
+                    ctx.strokeStyle = rgba(PURPLE, 0.12);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x * w, a.y * h);
+                    ctx.lineTo(b.x * w, b.y * h);
+                    ctx.stroke();
+                }
+                ctx.fillStyle = rgba(PURPLE, 0.5);
+                ctx.beginPath();
+                ctx.arc(a.x * w, a.y * h, 2.6, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.strokeStyle = rgba(CYAN, 0.35);
+            ctx.beginPath();
+            for (let x = 0; x < 0.36; x += 0.01) {
+                let yy = 0.5 + Math.sin(x * 26) * 0.06;
+                if (x === 0) ctx.moveTo(x * w, yy * h); else ctx.lineTo(x * w, yy * h);
+            }
+            ctx.stroke();
+            for (let b2 = 0; b2 < BARS; b2++) {
+                let bw2 = (0.26 * w) / BARS;
+                let bh2 = (0.12 + Math.sin(b2) * 0.08 + 0.12) * h;
+                ctx.fillStyle = rgba(VIOLET, 0.4);
+                ctx.fillRect(0.72 * w + b2 * bw2, 0.84 * h - bh2, bw2 * 0.62, bh2);
+            }
+            ctx.font = '9px "JetBrains Mono", monospace';
+            ctx.fillStyle = rgba(VIOLET, 0.4);
+            ctx.fillText('PHYSICAL FLOW → NEURAL MODEL → PREDICTION', 0.03 * w, 0.14 * h);
+        }
+
+        build();
+        resize();
+        global.addEventListener('resize', function () {
+            resize();
+        });
+
+        if (REDUCED) {
+            staticFrame();
+        } else {
+            whenVisible(canvas, function () {
+                if (!running) {
+                    running = true;
+                    raf = requestAnimationFrame(frame);
+                }
+            }, function () {
+                if (running) {
+                    cancelAnimationFrame(raf);
+                    running = false;
+                }
+            });
+        }
+    }
+
     global.NN = {
         reduced: REDUCED,
         tier: deviceTier,
         NeuralField: NeuralField,
         NeuralSphere: NeuralSphere,
+        FusionFlow: FusionFlow,
     };
 
 })(window);
