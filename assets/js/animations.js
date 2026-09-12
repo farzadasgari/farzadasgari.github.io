@@ -153,5 +153,29 @@
         const skip = $('#boot-skip');
         if (skip) skip.addEventListener('click', finish);
         setTimeout(finish, 4200);
+
+        function reveals() {
+            const items = $$('.reveal, .reveal-group');
+            if (!items.length) return;
+
+            if (REDUCED || !('IntersectionObserver' in global)) {
+                items.forEach(function (el) {
+                    el.classList.add('is-visible');
+                });
+                return;
+            }
+
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                });
+            }, {threshold: 0.12, rootMargin: '0px 0px -8% 0px'});
+
+            items.forEach(function (el) {
+                io.observe(el);
+            });
+        }
     }
 })(window);
