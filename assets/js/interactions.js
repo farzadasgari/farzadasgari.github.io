@@ -161,3 +161,53 @@
 
         if (store.get('research-mode') === '1') apply(true);
     }
+
+    function easterEggs(field) {
+        if (!field || REDUCED) return;
+
+        const skip = 'a, button, input, select, textarea, summary, .panel, .project-card, ' +
+            '.interest-card, .teach-card, .contact-link, .skill-node, .repo-card, .metric';
+
+        document.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest(skip)) return;
+            field.pulse(e.clientX, e.clientY, 0.9);
+        });
+
+        document.addEventListener('dblclick', function (e) {
+            if (e.target.closest && e.target.closest(skip)) return;
+            field.pulse(e.clientX, e.clientY, 1.4);
+        });
+
+        const name = $('.hero-name');
+        if (name) {
+            name.addEventListener('mouseenter', function () {
+                const r = name.getBoundingClientRect();
+                field.pulse(r.left + r.width / 2, r.top + r.height / 2, 0.75);
+            });
+        }
+
+        let lastY = global.scrollY || 0, lastT = performance.now();
+        global.addEventListener('scroll', function () {
+            const now = performance.now();
+            const y = global.scrollY || 0;
+            const dt = now - lastT;
+            if (dt > 60) {
+                const v = Math.abs(y - lastY) / dt;
+                if (v > 1.1) field.excite(Math.min(v / 14, 0.30));
+                lastY = y;
+                lastT = now;
+            }
+        }, {passive: true});
+    }
+
+    global.UI = {
+        init: function (field) {
+            nav();
+            scrollspy();
+            cursor();
+            researchMode(field);
+            easterEggs(field);
+        }
+    };
+
+})(window);
