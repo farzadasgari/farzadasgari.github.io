@@ -285,7 +285,7 @@
             if (played) return;
             played = true;
             if (fill) {
-                if (global.innerWidth <= 991) fill.style.height = '100%';
+                if (global.innerWidth <= 992) fill.style.height = '100%';
                 else fill.style.width = '100%';
             }
             stages.forEach(function (s, i) {

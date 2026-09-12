@@ -94,23 +94,49 @@
     .pipe-stage {
         display: grid;
         grid-template-columns: 46px minmax(0, 1fr);
-        gap: 1rem;
+        column-gap: 1.1rem;
+        row-gap: 0;
         align-items: start;
         text-align: left;
-        padding: 0 0 1.6rem;
+        padding: 0 0 1.5rem;
     }
 
     .pipe-node {
+        grid-column: 1;
+        grid-row: 1;
         margin: 0;
+    }
+
+    .pipe-stage h3 {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        min-height: 46px;
+        margin: 0;
+        font-size: 0.98rem;
+    }
+
+    .pipe-stage p {
+        grid-column: 2;
+        grid-row: 2;
+        margin: 0.1rem 0 0;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+
+    .pipe-stage:last-child {
+        padding-bottom: 0;
     }
 
     .pipe-rail {
         top: 12px;
-        bottom: 12px;
+        bottom: 2.4rem;
         left: 22px;
         right: auto;
         width: 1px;
         height: auto;
+        background: rgba(167, 139, 250, 0.22);
     }
 
     .pipe-rail-fill {
@@ -118,10 +144,6 @@
         width: 100% !important;
         height: 0;
         transition: height 1.6s var(--ease);
-    }
-
-    .pipe-stage h3 {
-        margin-top: 0.55rem;
     }
 
     .stack-row {
@@ -138,7 +160,7 @@
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     :root {
         --section-y: clamp(3.5rem, 9vw, 5rem);
     }
