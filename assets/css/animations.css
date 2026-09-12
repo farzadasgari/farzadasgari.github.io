@@ -146,3 +146,35 @@ body.is-booted .hero-instrument {
 .reveal-group.is-visible > * {
     animation: rise 0.75s var(--ease) both;
 }
+
+.reveal-group.is-visible > *:nth-child(1) {
+    animation-delay: 0.00s;
+}
+
+.reveal-group.is-visible > *:nth-child(2) {
+    animation-delay: 0.07s;
+}
+
+.reveal-group.is-visible > *:nth-child(3) {
+    animation-delay: 0.14s;
+}
+
+.reveal-group.is-visible > *:nth-child(4) {
+    animation-delay: 0.21s;
+}
+
+.reveal-group.is-visible > *:nth-child(5) {
+    animation-delay: 0.28s;
+}
+
+.reveal-group.is-visible > *:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.reveal-group.is-visible > *:nth-child(7) {
+    animation-delay: 0.42s;
+}
+
+.reveal-group.is-visible > *:nth-child(8) {
+    animation-delay: 0.49s;
+}
