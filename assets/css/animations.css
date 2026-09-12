@@ -191,3 +191,7 @@ body.is-booted .hero-instrument {
 .strip-track {
     animation: strip-scroll 42s linear infinite;
 }
+
+.strip:hover .strip-track {
+    animation-play-state: paused;
+}
