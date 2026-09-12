@@ -122,3 +122,42 @@
             ring.style.opacity = '1';
         });
     }
+
+    function researchMode(field) {
+        const btns = $$('[data-research-toggle]');
+        if (!btns.length) return;
+
+        const hud = $('#hud');
+        let timer = null;
+
+        function apply(on) {
+            document.body.classList.toggle('research-mode', on);
+            btns.forEach(function (b) {
+                b.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+            if (field) field.setLabels(on);
+            if (on && hud && field) {
+                timer = setInterval(function () {
+                    const s = field.stats();
+                    hud.innerHTML =
+                        '<div class="row"><span class="k">nodes</span><span>' + s.nodes + '</span></div>' +
+                        '<div class="row"><span class="k">edges</span><span>' + s.links + '</span></div>' +
+                        '<div class="row"><span class="k">signals</span><span>' + s.signals + '</span></div>' +
+                        '<div class="row"><span class="k">frame</span><span>' + s.ms + ' ms</span></div>' +
+                        '<div class="row"><span class="k">state</span><span>ACTIVE</span></div>';
+                }, 500);
+            } else if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+            store.set('research-mode', on ? '1' : '0');
+        }
+
+        btns.forEach(function (b) {
+            b.addEventListener('click', function () {
+                apply(!document.body.classList.contains('research-mode'));
+            });
+        });
+
+        if (store.get('research-mode') === '1') apply(true);
+    }
